@@ -19,6 +19,7 @@ public class StartState extends State{
 	@Override
 	public void handleInput() {
 		if(Gdx.input.isKeyPressed(Keys.ANY_KEY)){
+			gsm.set(new PlayState(gsm));
 			dispose();
 		}
 	}
