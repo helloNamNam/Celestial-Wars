@@ -7,9 +7,9 @@ import com.mygdx.game.Game;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
-		cfg.title = "Celestial Wars";
-		cfg.width = 1280;
-		cfg.height = 960;
+		cfg.title = Game.TITLE;
+		cfg.width = Game.WIDTH;
+		cfg.height = Game.HEIGHT;
 		cfg.x = -1;
 		cfg.y = 20;
 		new LwjglApplication(new Game(), cfg);
