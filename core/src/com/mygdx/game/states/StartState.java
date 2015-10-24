@@ -12,8 +12,8 @@ public class StartState extends State{
 	private Texture startBtn;
 	public StartState(GameStateManager gsm) {
 		super(gsm);
-		background = new Texture("background_CW.jpg");
-		startBtn = new Texture("startBtn.png");
+		background = new Texture(Gdx.files.internal("background_CW.jpg"));
+		startBtn = new Texture(Gdx.files.internal("startBtn.png"));
 	}
 
 	@Override

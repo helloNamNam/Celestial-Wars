@@ -14,7 +14,7 @@ public class PlayState extends State{
 
 	public PlayState(GameStateManager gsm) {
 		super(gsm);
-		pic = new Texture("Bitsprite.png");
+		pic = new Texture(Gdx.files.internal("Bitsprite.png"));
 		p1 = new Rectangle();
 		p1.x = (Game.WIDTH / 2) - (pic.getWidth() / 2);
 		p1.y = 0;
