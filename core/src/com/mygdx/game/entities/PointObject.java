@@ -5,6 +5,7 @@ public class PointObject {
 	private float x;
 	private float y;
 	
+	//set position x,y
 	public PointObject(float x, float y){
 		this.x = x;
 		this.y = y;

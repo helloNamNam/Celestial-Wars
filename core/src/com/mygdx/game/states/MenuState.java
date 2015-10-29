@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class MenuState extends State{
 
+	//constructor
 	public MenuState(GameStateManager gsm) {
 		super(gsm);
 	}

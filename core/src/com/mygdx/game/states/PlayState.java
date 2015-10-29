@@ -6,51 +6,49 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.game.Game;
+import com.mygdx.game.entities.Player;
 
 public class PlayState extends State{
 	
-	private Texture pic;
-	private Rectangle p1;
+	private Texture background;
+	private Texture stageBG;
+	private Player player;
+	
 
+	//constructor
 	public PlayState(GameStateManager gsm) {
 		super(gsm);
-		pic = new Texture(Gdx.files.internal("Bitsprite.png"));
-		p1 = new Rectangle();
-		p1.x = (Game.WIDTH / 2) - (pic.getWidth() / 2);
-		p1.y = 0;
-	}
-
-	@Override
-	public void handleInput() {	
+		background = new Texture(Gdx.files.internal("play_bg.jpg"));
+		stageBG = new Texture(Gdx.files.internal("spc1.jpg"));
+		player = new Player(stageBG);
 		
 	}
 
+	//check input from user
+	@Override
+	public void handleInput(){}
+
+	//update state
 	@Override
 	public void update(float dt) {
 		handleInput();
+		player.update(dt);
 		
 	}
 
+	//draw texture
 	@Override
 	public void render(SpriteBatch sb) {
+		
 		sb.begin();
-		sb.draw(pic, p1.x, p1.y);
+		sb.draw(background, 0, 0);
+		sb.draw(stageBG, 0, 0);
+		sb.draw(player.getBody(), player.getPos().x, player.getPos().y);
 		sb.end();
-		
-		if(Gdx.input.isKeyPressed(Keys.LEFT)){ p1.x -= 200 * Gdx.graphics.getDeltaTime(); }
-		if(Gdx.input.isKeyPressed(Keys.RIGHT)){ p1.x += 200 * Gdx.graphics.getDeltaTime(); }
-		if(Gdx.input.isKeyPressed(Keys.DOWN)){ p1.y -= 200 * Gdx.graphics.getDeltaTime(); }
-		if(Gdx.input.isKeyPressed(Keys.UP)){ p1.y += 200 * Gdx.graphics.getDeltaTime(); }
-		
-		if(p1.x < 0){ p1.x = 0; }
-		if(p1.x > Game.WIDTH - pic.getWidth()){ p1.x = Game.WIDTH - pic.getWidth(); }
-		if(p1.y < 0){ p1.y = 0; }
-		if(p1.y > Game.HEIGHT - pic.getHeight()){ p1.y = Game.HEIGHT - pic.getHeight(); }
 	}
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
 		
 	}
 

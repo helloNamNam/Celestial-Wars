@@ -10,12 +10,16 @@ public class StartState extends State{
 
 	private Texture background;
 	private Texture startBtn;
+	private float time = 0;
+	
+	//constructor
 	public StartState(GameStateManager gsm) {
 		super(gsm);
-		background = new Texture(Gdx.files.internal("background_CW.jpg"));
-		startBtn = new Texture(Gdx.files.internal("startBtn.png"));
+		background = new Texture("background_CW.jpg");
+		startBtn = new Texture("startBtn.png");
 	}
 
+	//check input from user and go to next state
 	@Override
 	public void handleInput() {
 		if(Gdx.input.isKeyPressed(Keys.ANY_KEY)){
@@ -24,20 +28,25 @@ public class StartState extends State{
 		}
 	}
 
+	//update state. (wait input)
 	@Override
 	public void update(float dt) {
 		handleInput();
 	}
 
+	//draw texture
 	@Override
 	public void render(SpriteBatch sb) {
 		sb.begin();
 		sb.draw(background, 0, 0, Game.WIDTH, Game.HEIGHT);
-		sb.draw(startBtn, (Game.WIDTH / 2) - (startBtn.getWidth() / 2), 160);
+		if(time % 100 <= 50){
+			sb.draw(startBtn, (Game.WIDTH / 2) - (startBtn.getWidth() / 2), 160);
+		}
+		time++;
 		sb.end();
-		
 	}
 	
+	//remove
 	public void dispose(){
 		background.dispose();
 		startBtn.dispose();

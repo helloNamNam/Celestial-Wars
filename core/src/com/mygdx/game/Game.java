@@ -8,6 +8,8 @@ import com.mygdx.game.states.GameStateManager;
 import com.mygdx.game.states.StartState;
 
 public class Game extends ApplicationAdapter {
+	
+	//set size of desktop.
 	public static final int WIDTH = 1280;
 	public static final int HEIGHT = 960;
 	public static final String TITLE = "Celestial Wars";
@@ -15,6 +17,7 @@ public class Game extends ApplicationAdapter {
 	private SpriteBatch batch;
 	private GameStateManager gsm;
 	
+	//call push function of GameStateManager to push StartState.
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
@@ -22,6 +25,7 @@ public class Game extends ApplicationAdapter {
 		gsm.push(new StartState(gsm));
 	}
 
+	//set background's program.
 	@Override
 	public void render () {
 		Gdx.gl.glClearColor(0, 0, 0, 0);

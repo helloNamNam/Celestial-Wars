@@ -6,6 +6,7 @@ import com.mygdx.game.Game;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
+		//config size of desktop and position when program is run.
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = Game.TITLE;
 		cfg.width = Game.WIDTH;
