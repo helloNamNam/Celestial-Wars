@@ -3,7 +3,6 @@ package com.mygdx.game.states;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.Game;
 
 public class StartState extends State{
@@ -15,8 +14,8 @@ public class StartState extends State{
 	//constructor
 	public StartState(GameStateManager gsm) {
 		super(gsm);
-		background = new Texture("background_CW.jpg");
-		startBtn = new Texture("startBtn.png");
+		background = loadTexture("background_CW.jpg");
+		startBtn = loadTexture("startBtn.png");
 	}
 
 	//check input from user and go to next state
@@ -36,14 +35,15 @@ public class StartState extends State{
 
 	//draw texture
 	@Override
-	public void render(SpriteBatch sb) {
-		sb.begin();
-		sb.draw(background, 0, 0, Game.WIDTH, Game.HEIGHT);
+	public void render() {
+		Game.batch.begin();
+		Game.batch.draw(background, 0, 0, Game.WIDTH, Game.HEIGHT);
 		if(time % 100 <= 50){
-			sb.draw(startBtn, (Game.WIDTH / 2) - (startBtn.getWidth() / 2), 160);
+			Game.batch.draw(startBtn, (Game.WIDTH / 2) - (startBtn.getWidth() / 2), 160);
 		}
 		time++;
-		sb.end();
+		
+		Game.batch.end();
 	}
 	
 	//remove

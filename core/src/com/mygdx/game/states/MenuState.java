@@ -21,7 +21,7 @@ public class MenuState extends State{
 	}
 
 	@Override
-	public void render(SpriteBatch sb) {
+	public void render() {
 		
 	}
 

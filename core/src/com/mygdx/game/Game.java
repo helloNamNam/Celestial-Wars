@@ -14,7 +14,7 @@ public class Game extends ApplicationAdapter {
 	public static final int HEIGHT = 960;
 	public static final String TITLE = "Celestial Wars";
 	
-	private SpriteBatch batch;
+	public static SpriteBatch batch;
 	private GameStateManager gsm;
 	
 	//call push function of GameStateManager to push StartState.
@@ -31,6 +31,6 @@ public class Game extends ApplicationAdapter {
 		Gdx.gl.glClearColor(0, 0, 0, 0);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		gsm.update(Gdx.graphics.getDeltaTime());
-		gsm.render(batch);
+		gsm.render();
 	}
 }
