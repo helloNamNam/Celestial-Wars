@@ -6,8 +6,8 @@ import com.badlogic.gdx.math.Vector2;
 public abstract class Unit extends SpaceObject {
 
 
-	public Unit(int id, Vector2 pos, int velocity, float direction, Texture texture, int delay) {
-		super(id, pos, velocity, direction, texture, delay);
+	public Unit(int id, Vector2 pos, int velocity, float direction, Texture texture) {
+		super(id, pos, velocity, direction, texture);
 	}
 
 	private int hp;

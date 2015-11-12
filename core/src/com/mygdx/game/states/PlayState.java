@@ -1,8 +1,5 @@
 package com.mygdx.game.states;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
@@ -11,8 +8,6 @@ import com.mygdx.game.Assets;
 import com.mygdx.game.Game;
 import com.mygdx.game.entities.EntityManager;
 import com.mygdx.game.entities.Player;
-import com.mygdx.game.entities.SpaceObject;
-import com.mygdx.game.entities.bullets.Bullet;
 import com.mygdx.game.entities.enemies.Enemy;
 
 public class PlayState extends State{
@@ -20,20 +15,26 @@ public class PlayState extends State{
 	public final static float startX = 50;
 	public final static float startY = 50;
 	
-	Player player;
-	EntityManager entityManager;
+	private Texture background;
+	
+	public Player player;
+	public Enemy enemy;
+	public EntityManager entityManager;
 	
 	//constructor
-	public PlayState(GameStateManager gsm){
+	public PlayState(GameStateManager gsm) {
 		super(gsm);
 		entityManager = new EntityManager();
-		player = new Player(entityManager, new Vector2(50, 50), 4, -1, Assets.PLAYER, 0);
+		player = new Player(entityManager, new Vector2(100, 50), 4, -1, Assets.PLAYER);
+		enemy = new Enemy(entityManager, 2, new Vector2(100, 600), 0, 0, Assets.ENEMY);
+		entityManager.addEntity(enemy);
 		entityManager.addPlayer(player);
+		background = loadTexture("playbg.png");
 	}
 
 	//check input from user
 	@Override
-	public void handleInput(){
+	public void handleInput() {
 		if(Gdx.input.isKeyPressed(Keys.DOWN)) {
 			player.moveDown();
 		}
@@ -46,69 +47,38 @@ public class PlayState extends State{
 		if(Gdx.input.isKeyPressed(Keys.LEFT)) {
 			player.moveLeft();
 		}
-		if(Gdx.input.isKeyPressed(Keys.Z)){
+		if(Gdx.input.isKeyPressed(Keys.Z)) {
 			player.fire();
 		}
-		if(Gdx.input.isKeyJustPressed(Keys.X)){
+		if(Gdx.input.isKeyJustPressed(Keys.X)) {
 			player.useItem();
+		}
+		for(int i = 0; i*0.01 < 50; i++){
+			enemy.fire();
 		}
 //		System.out.println(player.getPos().x + ", " + player.getPos().y);
 	}
 
 	//update state
 	@Override
-	public void update(float dt){
+	public void update(float dt) {
 		handleInput();
+		player.update();
 	}
 
 	//draw texture
 	@Override
-	public void render(){
+	public void render() {
 		Game.batch.begin();
 		entityManager.render();
 		entityManager.update();
-		
-//		updatePlayerBullet();
-//		updateEnemyBullet();
-//		updateEnemy();
-//		updatePlayer();
+		Game.batch.draw(background, 0, 0);
 		
 		Game.batch.end();
 	}
-	
-//	public void updateEnemyBullet(){
-//		for(Bullet bullet: enemyBullets ){
-//			Game.batch.draw(bullet.getTexture(), bullet.getPos().x, bullet.getPos().y);
-//			bullet.process();
-//		}
-//	}
-//
-//	public void updatePlayerBullet(){
-//		for(Bullet bullet: player.getBulletList() ){
-//			Game.batch.draw(bullet.getTexture(), bullet.getPos().x, bullet.getPos().y);
-//		}
-//	}
-//	
-//	public void updateEnemy(){
-//		for(Enemy enemy: enemyUnits){
-//			Game.batch.draw(enemy.getTexture(), enemy.getPos().x, enemy.getPos().y);
-//		}
-//	}
-//	
-//	public void updatePlayer(){
-//		Game.batch.draw(player.getTexture(), player.getPos().x, player.getPos().y);
-//	}
 
 	@Override
-	public void dispose(){
+	public void dispose() {
 		
-	}
-	
-	private void checkCollision(SpaceObject object){
-//		for(SpaceObject targetObject: objectList){
-//			if(!(targetObject instanceof Player)){
-//				object.isCollision(targetObject);
-//			}
-//		}
 	}
 }

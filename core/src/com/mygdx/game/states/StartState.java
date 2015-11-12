@@ -14,14 +14,14 @@ public class StartState extends State{
 	//constructor
 	public StartState(GameStateManager gsm) {
 		super(gsm);
-		background = loadTexture("background_CW.jpg");
+		background = loadTexture("backgroundCW.jpg");
 		startBtn = loadTexture("startBtn.png");
 	}
 
 	//check input from user and go to next state
 	@Override
 	public void handleInput() {
-		if(Gdx.input.isKeyPressed(Keys.ANY_KEY)){
+		if(Gdx.input.isKeyPressed(Keys.ANY_KEY)) {
 			gsm.set(new PlayState(gsm));
 			dispose();
 		}
@@ -38,7 +38,7 @@ public class StartState extends State{
 	public void render() {
 		Game.batch.begin();
 		Game.batch.draw(background, 0, 0, Game.WIDTH, Game.HEIGHT);
-		if(time % 100 <= 50){
+		if(time % 100 <= 50) {
 			Game.batch.draw(startBtn, (Game.WIDTH / 2) - (startBtn.getWidth() / 2), 160);
 		}
 		time++;
@@ -47,7 +47,7 @@ public class StartState extends State{
 	}
 	
 	//remove
-	public void dispose(){
+	public void dispose() {
 		background.dispose();
 		startBtn.dispose();
 	}

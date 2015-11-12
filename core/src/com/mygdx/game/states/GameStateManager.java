@@ -2,41 +2,39 @@ package com.mygdx.game.states;
 
 import java.util.Stack;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
 public class GameStateManager {
 
 	//use stack to manage states.
 	private Stack<State> states;
 	
 	//constructor.
-	public GameStateManager(){
+	public GameStateManager() {
 		states = new Stack<State>();
 	}
 	
 	//push state into stack.
-	public void push(State state){
+	public void push(State state) {
 		states.push(state);
 	}
 	
 	//pop a top of stack.
-	public void pop(State state){
+	public void pop(State state) {
 		states.pop();
 	}
 	
 	//set what's next state run.
-	public void set(State state){
+	public void set(State state) {
 		states.pop();
 		states.push(state);
 	}
 	
 	//update state.
-	public void update(float dt){
+	public void update(float dt) {
 		states.peek().update(dt);
 	}
 	
 	//render state.
-	public void render(){
+	public void render() {
 		states.peek().render();
 	}
 }

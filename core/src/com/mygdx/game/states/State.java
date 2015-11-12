@@ -7,7 +7,7 @@ public abstract class State {
 
 	protected GameStateManager gsm;
 	
-	public State(GameStateManager gsm){
+	public State(GameStateManager gsm) {
 		this.gsm = gsm;
 	}
 	
