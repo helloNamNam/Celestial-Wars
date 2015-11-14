@@ -22,12 +22,13 @@ public abstract class SpaceObject {
 		this.direction = direction;
 		this.texture = texture;
 		bounds = new Rectangle(pos.x, pos.y, texture.getWidth(), texture.getHeight());
+		System.out.println(bounds.toString());
 	}
-	
+
 	public abstract Boolean isCollision(SpaceObject object);
 	public abstract void update();
 	
-	public void moveObject() {
+	public void moveObject(EntityManager entityManager) {
 		pos.x += velocity * MathUtils.cosDeg((float) direction);
 		pos.y += velocity * MathUtils.sinDeg((float) direction);
 		setPos(pos.x, pos.y);
@@ -39,8 +40,8 @@ public abstract class SpaceObject {
 	
 	public void setPos(float x, float y) {
 		pos.set(x, y);
-		bounds.setX(x);
-		bounds.setY(y);
+		bounds.x = x;
+		bounds.y = y;
 	}
 	
 	public Rectangle getBounds() {

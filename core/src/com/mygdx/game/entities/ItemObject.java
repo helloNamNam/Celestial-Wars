@@ -5,7 +5,6 @@ import com.badlogic.gdx.math.Vector2;
 
 public abstract class ItemObject extends SpaceObject {
 	
-	
 
 	public ItemObject(int id, Vector2 pos, int velocity, double direction, Texture texture) {
 		super(id, pos, velocity, direction, texture);

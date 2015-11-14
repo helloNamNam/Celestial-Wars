@@ -15,13 +15,19 @@ public class Enemy extends Unit{
 	public Enemy(EntityManager entityManager, int id, Vector2 pos, int velocity, float direction, Texture texture) {
 		super(id, pos, velocity, direction, texture);
 		this.entityManager = entityManager;
+		setLastFire(0);
 	}
 
 	public void fire() {
-		if(getId() == 2) {
-			if(System.currentTimeMillis() - getLastFire() >= 2500) {
-				entityManager.addEntity(new Bullet(2, new Vector2((Assets.ENEMY.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 10, (Assets.ENEMY.getHeight()/2) + getPos().y), 3, 270, Assets.BULLET));
-				setLastFire(System.currentTimeMillis());
+		if(getId() == 3) {
+			if(System.currentTimeMillis() - getLastFire() >= 500) {
+				entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.ENEMY.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 10, (Assets.ENEMY.getHeight()/2) + getPos().y), 7, 270, Assets.BULLET));
+				setLastFire((long) (System.currentTimeMillis() + Math.random()*250));
+			}
+		}else if(getId() == 4){
+			if(System.currentTimeMillis() - getLastFire() >= 200) {
+				entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.ENEMY.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 10, (Assets.ENEMY.getHeight()/2) + getPos().y), 7, 225 + Math.random()*90, Assets.BULLET));
+				setLastFire((long) (System.currentTimeMillis() + Math.random()*250));
 			}
 		}
 	}
@@ -33,6 +39,7 @@ public class Enemy extends Unit{
 
 	@Override
 	public void update() {
-		moveObject();
+		moveObject(entityManager);
+		fire();
 	}
 }

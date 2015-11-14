@@ -6,30 +6,36 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.Assets;
 import com.mygdx.game.Game;
+import com.mygdx.game.TimeControl;
 import com.mygdx.game.entities.EntityManager;
 import com.mygdx.game.entities.Player;
 import com.mygdx.game.entities.enemies.Enemy;
+
 
 public class PlayState extends State{
 	
 	public final static float startX = 50;
 	public final static float startY = 50;
+	public static int stage = 1;
 	
-	private Texture background;
+	private int loop;
+	
+	public Texture background;
 	
 	public Player player;
 	public Enemy enemy;
 	public EntityManager entityManager;
+	private TimeControl timeControl;
 	
 	//constructor
 	public PlayState(GameStateManager gsm) {
 		super(gsm);
 		entityManager = new EntityManager();
 		player = new Player(entityManager, new Vector2(100, 50), 4, -1, Assets.PLAYER);
-		enemy = new Enemy(entityManager, 2, new Vector2(100, 600), 0, 0, Assets.ENEMY);
-		entityManager.addEntity(enemy);
 		entityManager.addPlayer(player);
 		background = loadTexture("playbg.png");
+		timeControl = new TimeControl();
+		new Thread(timeControl).start();
 	}
 
 	//check input from user
@@ -49,12 +55,13 @@ public class PlayState extends State{
 		}
 		if(Gdx.input.isKeyPressed(Keys.Z)) {
 			player.fire();
+//			entityManager.addEntity(new Enemy(entityManager, 3, new Vector2((float) (20 + Math.random()*620), 900), 3, 270, Assets.ENEMY));
 		}
 		if(Gdx.input.isKeyJustPressed(Keys.X)) {
 			player.useItem();
 		}
-		for(int i = 0; i*0.01 < 50; i++){
-			enemy.fire();
+		if(Gdx.input.isKeyPressed(Keys.V)) {
+			System.out.println(timeControl.getTime());
 		}
 //		System.out.println(player.getPos().x + ", " + player.getPos().y);
 	}
@@ -62,8 +69,15 @@ public class PlayState extends State{
 	//update state
 	@Override
 	public void update(float dt) {
+		loop++;
+		if(loop > 5) { 
+			loop = 0; 
+		} 
 		handleInput();
 		player.update();
+		if(stage == 1) {
+			stageOne();
+		}
 	}
 
 	//draw texture
@@ -80,5 +94,16 @@ public class PlayState extends State{
 	@Override
 	public void dispose() {
 		
+	}
+	
+	public void stageOne() {
+		if(timeControl.getTime() >= 25 && timeControl.getTime() <= 45 && timeControl.getTime() % 5 == 0 && loop == 1) {
+			entityManager.addEnemy(new Enemy(entityManager, 3, new Vector2(0, 800), 3, 0, Assets.ENEMY));
+			entityManager.addEnemy(new Enemy(entityManager, 3, new Vector2(650, 700), 3, 180, Assets.ENEMY));
+		}
+		if(timeControl.getTime() >= 55 && timeControl.getTime() <= 65 && timeControl.getTime() % 5 == 0 && loop == 1) {
+			entityManager.addEnemy(new Enemy(entityManager, 4, new Vector2(50, 980), 3, 300, Assets.ENEMY));
+			entityManager.addEnemy(new Enemy(entityManager, 4, new Vector2(600, 980), 3, 240, Assets.ENEMY));
+		}
 	}
 }

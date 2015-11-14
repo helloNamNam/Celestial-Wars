@@ -46,19 +46,19 @@ public class Player extends Unit {
 	}
 	
 	public void moveUp() {
-		setPos(getPos().x, getPos().y += getVelocity());
+		setPos(getPos().x, getPos().y + getVelocity());
 	}
 	
 	public void moveDown() {
-		setPos(getPos().x, getPos().y -= getVelocity());
+		setPos(getPos().x, getPos().y - getVelocity());
 	}
 	
 	public void moveRight() {
-		setPos(getPos().x += getVelocity(), getPos().y);
+		setPos(getPos().x + getVelocity(), getPos().y);
 	}
 	
 	public void moveLeft() {
-		setPos(getPos().x -= getVelocity(), getPos().y);
+		setPos(getPos().x - getVelocity(), getPos().y);
 	}
 	
 	private void moveOut() {
@@ -70,30 +70,30 @@ public class Player extends Unit {
 	
 	private void addBulletone() {
 		if(System.currentTimeMillis() - getLastFire() >= 50) {
-			entityManager.addEntity(new Bullet(1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 10, (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
-			entityManager.addEntity(new Bullet(1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) - 10, (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
+			entityManager.addBullet(new Bullet(entityManager, 1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 10, (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
+			entityManager.addBullet(new Bullet(entityManager, 1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) - 10, (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
 			setLastFire(System.currentTimeMillis());
 		}
 	}
 	
 	private void addBullettwo() {
 		if(System.currentTimeMillis() - getLastFire() >= 50) {
-			entityManager.addEntity(new Bullet(1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 30, (Assets.PLAYER.getHeight()) + getPos().y), 20, 66, Assets.BULLET));
-			entityManager.addEntity(new Bullet(1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 10, (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
-			entityManager.addEntity(new Bullet(1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) - 10, (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
-			entityManager.addEntity(new Bullet(1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) - 30, (Assets.PLAYER.getHeight()) + getPos().y), 20, 114, Assets.BULLET));
+			entityManager.addBullet(new Bullet(entityManager, 1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 30, (Assets.PLAYER.getHeight()) + getPos().y), 20, 66, Assets.BULLET));
+			entityManager.addBullet(new Bullet(entityManager, 1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 10, (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
+			entityManager.addBullet(new Bullet(entityManager, 1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) - 10, (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
+			entityManager.addBullet(new Bullet(entityManager, 1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) - 30, (Assets.PLAYER.getHeight()) + getPos().y), 20, 114, Assets.BULLET));
 			setLastFire(System.currentTimeMillis());
 		}
 	}
 	
 	private void addBulletthree() {
 		if(System.currentTimeMillis() - getLastFire() >= 50) {
-			entityManager.addEntity(new Bullet(1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) - 15, (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
-			entityManager.addEntity(new Bullet(1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2), (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
-			entityManager.addEntity(new Bullet(1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 15, (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
-			entityManager.addEntity(new Bullet(1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 30, (Assets.PLAYER.getHeight()) + getPos().y), 20, 66, Assets.BULLET));
-			entityManager.addEntity(new Bullet(1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2), (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
-			entityManager.addEntity(new Bullet(1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) - 30, (Assets.PLAYER.getHeight()) + getPos().y), 20, 114, Assets.BULLET));
+			entityManager.addBullet(new Bullet(entityManager, 1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) - 15, (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
+			entityManager.addBullet(new Bullet(entityManager, 1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2), (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
+			entityManager.addBullet(new Bullet(entityManager, 1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 15, (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
+			entityManager.addBullet(new Bullet(entityManager, 1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 30, (Assets.PLAYER.getHeight()) + getPos().y), 20, 66, Assets.BULLET));
+			entityManager.addBullet(new Bullet(entityManager, 1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2), (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
+			entityManager.addBullet(new Bullet(entityManager, 1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) - 30, (Assets.PLAYER.getHeight()) + getPos().y), 20, 114, Assets.BULLET));
 			setLastFire(System.currentTimeMillis());
 		}
 	}
