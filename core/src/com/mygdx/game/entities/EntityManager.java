@@ -72,7 +72,7 @@ public class EntityManager {
 	
 	public void dispose() {
 		for(int i = 0; i < bullets.size(); i++) {
-			if(bullets.get(i).getPos().x < -50 || bullets.get(i).getPos().x > 700 || bullets.get(i).getPos().y < -50 || bullets.get(i).getPos().y > 990) {
+			if(bullets.get(i).getPos().x < 0 || bullets.get(i).getPos().x > 660 || bullets.get(i).getPos().y < 0 || bullets.get(i).getPos().y > 960) {
 				bullets.remove(bullets.get(i));
 			}
 		}
@@ -85,7 +85,7 @@ public class EntityManager {
 	
 	public void checkCollision(){
 		for(int i = 0; i < bullets.size(); i++) {
-			if((bullets.get(i).getId() == 1)){
+			if((bullets.get(i).getId() == 2)){
 				for(int j = 0; j < enemies.size(); j++) {
 					if((enemies.get(j).getId() > 2) && (bullets.get(i).getBounds().overlaps((enemies.get(j).getBounds())))) {
 						System.out.println("Hits by bullet's player!!");
@@ -98,7 +98,7 @@ public class EntityManager {
 		}
 		
 		for(int i = 0; i < enemies.size(); i++) {
-			if((enemies.get(i).getId() > 1) && (players.get(0).getBounds().overlaps((enemies.get(i).getBounds())))) {
+			if((enemies.get(i).getId() > 2) && (players.get(0).getBounds().overlaps((enemies.get(i).getBounds())))) {
 				System.out.println("Bound!!");
 				enemies.remove(enemies.get(i));
 //				players.remove(players.get(0));
@@ -106,7 +106,7 @@ public class EntityManager {
 		}
 		
 		for(int i = 0; i < bullets.size(); i++) {
-			if((bullets.get(i).getId() > 1) && (players.get(0).getBounds().overlaps((bullets.get(i).getBounds())))) {
+			if((bullets.get(i).getId() > 2) && (players.get(0).getBounds().overlaps((bullets.get(i).getBounds())))) {
 				System.out.println("Bound!!");
 				bullets.remove(bullets.get(i));
 //				players.remove(players.get(0));

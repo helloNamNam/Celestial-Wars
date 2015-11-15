@@ -1,6 +1,7 @@
 package com.mygdx.game.entities;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
@@ -22,7 +23,6 @@ public abstract class SpaceObject {
 		this.direction = direction;
 		this.texture = texture;
 		bounds = new Rectangle(pos.x, pos.y, texture.getWidth(), texture.getHeight());
-		System.out.println(bounds.toString());
 	}
 
 	public abstract Boolean isCollision(SpaceObject object);

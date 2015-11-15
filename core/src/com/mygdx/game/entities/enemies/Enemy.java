@@ -19,15 +19,29 @@ public class Enemy extends Unit{
 	}
 
 	public void fire() {
-		if(getId() == 3) {
+		if(getId() >= 6 && getId() <= 15) {
 			if(System.currentTimeMillis() - getLastFire() >= 500) {
-				entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.ENEMY.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 10, (Assets.ENEMY.getHeight()/2) + getPos().y), 7, 270, Assets.BULLET));
+				entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.ENEMY.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 10, (Assets.ENEMY.getHeight()/2) + getPos().y), 7, 270, Assets.BULLET));
 				setLastFire((long) (System.currentTimeMillis() + Math.random()*250));
 			}
-		}else if(getId() == 4){
+		}
+		if(getId() >= 16 && getId() <= 21) {
 			if(System.currentTimeMillis() - getLastFire() >= 200) {
-				entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.ENEMY.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 10, (Assets.ENEMY.getHeight()/2) + getPos().y), 7, 225 + Math.random()*90, Assets.BULLET));
+				entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.ENEMY.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 10, (Assets.ENEMY.getHeight()/2) + getPos().y), 7, 225 + Math.random()*90, Assets.BULLET));
 				setLastFire((long) (System.currentTimeMillis() + Math.random()*250));
+			}
+		}
+		if(getId() >= 22 && getId() <= 23) {
+			System.out.println(getPos().y);
+			if(getPos().y == 607){
+				setVelocity(0);
+			}
+			if(System.currentTimeMillis() - getLastFire() >= 2000) {
+				for(int degree = 0; degree < 360; degree += 12) {
+					entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.ENEMY.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2), (Assets.ENEMY.getHeight()/2) + getPos().y), 5, degree, Assets.BULLET));
+				}
+				setLastFire(System.currentTimeMillis());
+				setVelocity(5);
 			}
 		}
 	}

@@ -70,30 +70,30 @@ public class Player extends Unit {
 	
 	private void addBulletone() {
 		if(System.currentTimeMillis() - getLastFire() >= 50) {
-			entityManager.addBullet(new Bullet(entityManager, 1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 10, (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
-			entityManager.addBullet(new Bullet(entityManager, 1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) - 10, (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
+			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 10, (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
+			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) - 10, (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
 			setLastFire(System.currentTimeMillis());
 		}
 	}
 	
 	private void addBullettwo() {
 		if(System.currentTimeMillis() - getLastFire() >= 50) {
-			entityManager.addBullet(new Bullet(entityManager, 1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 30, (Assets.PLAYER.getHeight()) + getPos().y), 20, 66, Assets.BULLET));
-			entityManager.addBullet(new Bullet(entityManager, 1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 10, (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
-			entityManager.addBullet(new Bullet(entityManager, 1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) - 10, (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
-			entityManager.addBullet(new Bullet(entityManager, 1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) - 30, (Assets.PLAYER.getHeight()) + getPos().y), 20, 114, Assets.BULLET));
+			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 30, (Assets.PLAYER.getHeight()) + getPos().y), 20, 66, Assets.BULLET));
+			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 10, (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
+			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) - 10, (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
+			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) - 30, (Assets.PLAYER.getHeight()) + getPos().y), 20, 114, Assets.BULLET));
 			setLastFire(System.currentTimeMillis());
 		}
 	}
 	
 	private void addBulletthree() {
 		if(System.currentTimeMillis() - getLastFire() >= 50) {
-			entityManager.addBullet(new Bullet(entityManager, 1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) - 15, (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
-			entityManager.addBullet(new Bullet(entityManager, 1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2), (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
-			entityManager.addBullet(new Bullet(entityManager, 1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 15, (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
-			entityManager.addBullet(new Bullet(entityManager, 1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 30, (Assets.PLAYER.getHeight()) + getPos().y), 20, 66, Assets.BULLET));
-			entityManager.addBullet(new Bullet(entityManager, 1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2), (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
-			entityManager.addBullet(new Bullet(entityManager, 1, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) - 30, (Assets.PLAYER.getHeight()) + getPos().y), 20, 114, Assets.BULLET));
+			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) - 15, (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
+			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2), (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
+			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 15, (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
+			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) + 30, (Assets.PLAYER.getHeight()) + getPos().y), 20, 66, Assets.BULLET));
+			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2), (Assets.PLAYER.getHeight()/2) + getPos().y), 20, 90, Assets.BULLET));
+			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getWidth()/2) + getPos().x - (Assets.BULLET.getWidth()/2) - 30, (Assets.PLAYER.getHeight()) + getPos().y), 20, 114, Assets.BULLET));
 			setLastFire(System.currentTimeMillis());
 		}
 	}

@@ -18,7 +18,8 @@ public class PlayState extends State{
 	public final static float startY = 50;
 	public static int stage = 1;
 	
-	private int loop;
+	public int loop;
+	public int counterID;
 	
 	public Texture background;
 	
@@ -30,6 +31,7 @@ public class PlayState extends State{
 	//constructor
 	public PlayState(GameStateManager gsm) {
 		super(gsm);
+		counterID = 6;
 		entityManager = new EntityManager();
 		player = new Player(entityManager, new Vector2(100, 50), 4, -1, Assets.PLAYER);
 		entityManager.addPlayer(player);
@@ -98,12 +100,23 @@ public class PlayState extends State{
 	
 	public void stageOne() {
 		if(timeControl.getTime() >= 25 && timeControl.getTime() <= 45 && timeControl.getTime() % 5 == 0 && loop == 1) {
-			entityManager.addEnemy(new Enemy(entityManager, 3, new Vector2(0, 800), 3, 0, Assets.ENEMY));
-			entityManager.addEnemy(new Enemy(entityManager, 3, new Vector2(650, 700), 3, 180, Assets.ENEMY));
+			entityManager.addEnemy(new Enemy(entityManager, counterID, new Vector2(0, 800), 3, 0, Assets.ENEMY));
+			counterID++;
+			entityManager.addEnemy(new Enemy(entityManager, counterID, new Vector2(650, 700), 3, 180, Assets.ENEMY));
+			counterID++;
 		}
-		if(timeControl.getTime() >= 55 && timeControl.getTime() <= 65 && timeControl.getTime() % 5 == 0 && loop == 1) {
-			entityManager.addEnemy(new Enemy(entityManager, 4, new Vector2(50, 980), 3, 300, Assets.ENEMY));
-			entityManager.addEnemy(new Enemy(entityManager, 4, new Vector2(600, 980), 3, 240, Assets.ENEMY));
+		if(timeControl.getTime() >= 65 && timeControl.getTime() <= 75 && timeControl.getTime() % 5 == 0 && loop == 1) {
+			entityManager.addEnemy(new Enemy(entityManager, counterID, new Vector2(50, 980), 3, 300, Assets.ENEMY));
+			counterID++;
+			entityManager.addEnemy(new Enemy(entityManager, counterID, new Vector2(600, 980), 3, 240, Assets.ENEMY));
+			counterID++;
+		}
+		if(timeControl.getTime() == 90 && loop == 1) {
+			entityManager.addEnemy(new Enemy(entityManager, counterID, new Vector2(155, 980), 3, 270, Assets.ENEMY));
+			counterID++;
+		}
+		if(timeControl.getTime() == 105 && loop == 1) {
+			entityManager.addEnemy(new Enemy(entityManager, counterID, new Vector2(465, 980), 3, 270, Assets.ENEMY));
 		}
 	}
 }
