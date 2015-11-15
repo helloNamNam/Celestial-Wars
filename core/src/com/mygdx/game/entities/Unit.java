@@ -1,13 +1,14 @@
 package com.mygdx.game.entities;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
 public abstract class Unit extends SpaceObject {
 
 
-	public Unit(int id, Vector2 pos, int velocity, float direction, Texture texture) {
-		super(id, pos, velocity, direction, texture);
+	public Unit(int id, Vector2 pos, int velocity, float direction, TextureRegion texture, float rotate) {
+		super(id, pos, velocity, direction, texture, rotate);
 	}
 
 	private int hp;

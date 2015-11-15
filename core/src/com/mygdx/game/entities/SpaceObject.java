@@ -13,16 +13,18 @@ public abstract class SpaceObject {
 	private Vector2 pos;
 	private int velocity;
 	private double direction;
-	private Texture texture;
+	private TextureRegion texture;
 	private Rectangle bounds;
+	private float rotate;
 
-	public SpaceObject(int id, Vector2 pos, int velocity, double direction, Texture texture) {
+	public SpaceObject(int id, Vector2 pos, int velocity, double direction, TextureRegion texture, float rotate) {
 		this.id = id;
 		this.pos = pos;
 		this.velocity = velocity;
 		this.direction = direction;
 		this.texture = texture;
-		bounds = new Rectangle(pos.x, pos.y, texture.getWidth(), texture.getHeight());
+		this.rotate = rotate;
+		bounds = new Rectangle(pos.x, pos.y, texture.getRegionWidth(), texture.getRegionHeight());
 	}
 
 	public abstract Boolean isCollision(SpaceObject object);
@@ -77,6 +79,6 @@ public abstract class SpaceObject {
 	}
 
 	public void render() {
-		Game.batch.draw(texture, pos.x, pos.y);
+		Game.batch.draw(texture, pos.x, pos.y, texture.getRegionWidth()/2, texture.getRegionHeight()/2, texture.getRegionWidth(), texture.getRegionHeight(), 1, 1, rotate);
 	}
 }

@@ -33,7 +33,7 @@ public class PlayState extends State{
 		super(gsm);
 		counterID = 6;
 		entityManager = new EntityManager();
-		player = new Player(entityManager, new Vector2(100, 50), 4, -1, Assets.PLAYER);
+		player = new Player(entityManager, new Vector2(100, 50), 4, -1, Assets.PLAYER, 0);
 		entityManager.addPlayer(player);
 		background = loadTexture("playbg.png");
 		timeControl = new TimeControl();
@@ -100,23 +100,23 @@ public class PlayState extends State{
 	
 	public void stageOne() {
 		if(timeControl.getTime() >= 25 && timeControl.getTime() <= 45 && timeControl.getTime() % 5 == 0 && loop == 1) {
-			entityManager.addEnemy(new Enemy(entityManager, counterID, new Vector2(0, 800), 3, 0, Assets.ENEMY));
+			entityManager.addEnemy(new Enemy(entityManager, counterID, new Vector2(0, 800), 3, 0, Assets.ENEMY, 0));
 			counterID++;
-			entityManager.addEnemy(new Enemy(entityManager, counterID, new Vector2(650, 700), 3, 180, Assets.ENEMY));
+			entityManager.addEnemy(new Enemy(entityManager, counterID, new Vector2(650, 700), 3, 180, Assets.ENEMY, 0));
 			counterID++;
 		}
 		if(timeControl.getTime() >= 65 && timeControl.getTime() <= 75 && timeControl.getTime() % 5 == 0 && loop == 1) {
-			entityManager.addEnemy(new Enemy(entityManager, counterID, new Vector2(50, 980), 3, 300, Assets.ENEMY));
+			entityManager.addEnemy(new Enemy(entityManager, counterID, new Vector2(50, 980), 3, 300, Assets.ENEMY, 0));
 			counterID++;
-			entityManager.addEnemy(new Enemy(entityManager, counterID, new Vector2(600, 980), 3, 240, Assets.ENEMY));
+			entityManager.addEnemy(new Enemy(entityManager, counterID, new Vector2(600, 980), 3, 240, Assets.ENEMY, 0));
 			counterID++;
 		}
 		if(timeControl.getTime() == 90 && loop == 1) {
-			entityManager.addEnemy(new Enemy(entityManager, counterID, new Vector2(155, 980), 3, 270, Assets.ENEMY));
+			entityManager.addEnemy(new Enemy(entityManager, counterID, new Vector2(155, 980), 3, 270, Assets.ENEMY, 0));
 			counterID++;
 		}
 		if(timeControl.getTime() == 105 && loop == 1) {
-			entityManager.addEnemy(new Enemy(entityManager, counterID, new Vector2(465, 980), 3, 270, Assets.ENEMY));
+			entityManager.addEnemy(new Enemy(entityManager, counterID, new Vector2(465, 980), 3, 270, Assets.ENEMY, 0));
 		}
 	}
 }
