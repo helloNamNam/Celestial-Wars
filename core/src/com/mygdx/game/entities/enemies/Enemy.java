@@ -12,7 +12,6 @@ import com.mygdx.game.states.PlayState;
 
 public class Enemy extends Unit{
 	
-	private PlayState playState;
 	private EntityManager entityManager;
 	private int degree;
 	private float random;
@@ -188,6 +187,7 @@ public class Enemy extends Unit{
 				if(getHp() - 1 == 0) {
 					time.setTime(900);
 				}else if(time.getTime() >= 900) {
+					entityManager.clearAll();
 					entityManager.addRemove(this);
 				}
 			}
@@ -216,7 +216,7 @@ public class Enemy extends Unit{
 						degree = 0;
 					}
 				}
-				if(getRoundFire() % 10 == 1) {
+				if(getRoundFire() % 10 == 1 || getRoundFire() % 10 == 6) {
 					if(degree < 6){
 						if(System.currentTimeMillis() - getLastFire() >= 100) {
 							entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETROCKET01.getRegionWidth()/2), (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 10, 240, Assets.BULLETROCKET01, 150));
@@ -245,7 +245,7 @@ public class Enemy extends Unit{
 						setRoundFire(getRoundFire() + 1);
 					}
 				}
-				if(getRoundFire() % 10 == 2){
+				if(getRoundFire() % 10 == 2 || getRoundFire() % 10 == 8){
 					if(degree < 2){
 						if(System.currentTimeMillis() - getLastFire() >= 1500) {
 							for(int i = 0; i < 360; i += 6) {
@@ -263,30 +263,80 @@ public class Enemy extends Unit{
 						setRoundFire(getRoundFire() + 1);
 					}
 				}
-				if(getRoundFire() % 10 == 3){
-					if(degree < 4){
-						if(System.currentTimeMillis() - getLastFire() >= 1500) {
+				if(getRoundFire() % 10 == 3 || getRoundFire() % 10 == 7){
+					if(degree < 5){
+						if(System.currentTimeMillis() - getLastFire() >= 1000) {
 							entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETGREENBIG.getRegionWidth()/2) + 10, (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 4, 240, Assets.BULLETGREENBIG, 240));
 							entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETGREENBIG.getRegionWidth()/2) + 10, (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 4, 260, Assets.BULLETGREENBIG, 260));
 							entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETGREENBIG.getRegionWidth()/2) + 10, (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 4, 280, Assets.BULLETGREENBIG, 280));
 							entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETGREENBIG.getRegionWidth()/2) + 10, (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 4, 300, Assets.BULLETGREENBIG, 300));
 							degree++;
-							for(int i = 0; i < 10 + Math.random()*30; i++){
-								entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETCIRGREEN.getRegionWidth()/2) + 10, (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 4 + Math.random()*6, 225 + Math.random()*90, Assets.BULLETCIRGREEN, 0));
+							for(int i = 0; i < 30; i++){
+								entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETCIRGREEN.getRegionWidth()/2) + 10, (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 2 + Math.random()*4, 225 + Math.random()*90, Assets.BULLETCIRGREEN, 0));
 							}
 							setLastFire(System.currentTimeMillis());
 						}
 					}else{
-						degree = 0;
-						setRoundFire(getRoundFire() + 1);
+						if(System.currentTimeMillis() - getLastFire() >= 500) {
+							setRoundFire(getRoundFire() + 1);
+							setLastFire(System.currentTimeMillis());
+							degree = 0;
+						}
 					}
+				}
+				if(time.getTime() <= 1400 && (getRoundFire() % 10 == 4)){
+					if(System.currentTimeMillis() - getLastFire() >= 100) {
+						entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETGREENSH.getRegionWidth()/2), (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 5, degree, Assets.BULLETGREENSH, degree-90));
+						entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETGREENSH.getRegionWidth()/2), (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 5, degree+60, Assets.BULLETGREENSH, degree-30));
+						entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETGREENSH.getRegionWidth()/2), (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 5, degree+120, Assets.BULLETGREENSH, degree+30));
+						entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETGREENSH.getRegionWidth()/2), (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 5, degree+180, Assets.BULLETGREENSH, degree+90));
+						entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETGREENSH.getRegionWidth()/2), (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 5, degree+240, Assets.BULLETGREENSH, degree+150));
+						entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETGREENSH.getRegionWidth()/2), (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 5, degree+300, Assets.BULLETGREENSH, degree+210));
+						entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETGREENSH.getRegionWidth()/2), (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 5, 360-degree, Assets.BULLETGREENSH, 360-degree-90));
+						entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETGREENSH.getRegionWidth()/2), (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 5, 360-(degree+60), Assets.BULLETGREENSH, 360-(degree+150)));
+						entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETGREENSH.getRegionWidth()/2), (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 5, 360-(degree+120), Assets.BULLETGREENSH, 360-(degree+210)));
+						entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETGREENSH.getRegionWidth()/2), (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 5, 360-(degree+180), Assets.BULLETGREENSH, 360-(degree+270)));
+						entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETGREENSH.getRegionWidth()/2), (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 5, 360-(degree+240), Assets.BULLETGREENSH, 360-(degree+330)));
+						entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETGREENSH.getRegionWidth()/2), (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 5, 360-(degree+300), Assets.BULLETGREENSH, 360-(degree+390)));
+						setLastFire(System.currentTimeMillis());
+					}
+					
+					if(degree < 360) {
+						degree ++;
+					}else{
+						setRoundFire(getRoundFire() + 1);
+						degree = 0;
+					}
+				}
+				if(getRoundFire() % 10 == 5 || getRoundFire() % 10 == 9){
+					if(degree < 7){
+						if(System.currentTimeMillis() - getLastFire() >= 500) {
+							entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETGREENBIG.getRegionWidth()/2) + 10, (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 4, 240, Assets.BULLETGREENBIG, 240));
+							entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETGREENBIG.getRegionWidth()/2) + 10, (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 4, 250, Assets.BULLETGREENBIG, 250));
+							entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETGREENBIG.getRegionWidth()/2) + 10, (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 4, 260, Assets.BULLETGREENBIG, 260));
+							entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETGREENBIG.getRegionWidth()/2) + 10, (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 4, 270, Assets.BULLETGREENBIG, 270));
+							entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETGREENBIG.getRegionWidth()/2) + 10, (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 4, 280, Assets.BULLETGREENBIG, 280));
+							entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETGREENBIG.getRegionWidth()/2) + 10, (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 4, 290, Assets.BULLETGREENBIG, 290));
+							entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETGREENBIG.getRegionWidth()/2) + 10, (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 4, 300, Assets.BULLETGREENBIG, 300));
+							degree++;
+							setLastFire(System.currentTimeMillis());
+						}
+					}else{
+						setRoundFire(getRoundFire() + 1);
+						degree = 0;
+					}
+				}
+				if((time.getTime() >= 1200 && getRoundFire() % 10 == 0) || (time.getTime() > 1400 && getRoundFire() % 10 == 4)){
+					setRoundFire(getRoundFire() + 1);
 				}
 				if(getHp() - 1 == 0) {
 					time.setTime(1600);
 					PlayState.stage = 2;
 				}else if(time.getTime() >= 1600) {
+					entityManager.clearAll();
 					entityManager.addRemove(this);
 				}
+				System.out.println(time.getTime());
 			}
 		}
 	}

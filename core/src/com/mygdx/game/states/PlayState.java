@@ -178,7 +178,7 @@ public class PlayState extends State {
 			counterID++;
 		}
 		if(timeControl.getTime() == 1000 && loop == 1) {
-			entityManager.addEnemy(new Enemy(entityManager, 999, 1080, new Vector2(((620 - Assets.BOSSONE.getRegionWidth()) / 2) + 20, 980), 3, 270, Assets.BOSSONE, 0, 65, 45, 225, 230, timeControl));
+			entityManager.addEnemy(new Enemy(entityManager, 999, 1620, new Vector2(((620 - Assets.BOSSONE.getRegionWidth()) / 2) + 20, 980), 3, 270, Assets.BOSSONE, 0, 65, 45, 225, 230, timeControl));
 			counterID = 6;
 		}
 	}
