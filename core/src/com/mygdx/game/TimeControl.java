@@ -26,4 +26,8 @@ public class TimeControl implements Runnable {
 	public void resetTime() {
 		time = 0;
 	}
+	
+	public void setTime(float time) {
+		this.time = time;
+	}
 }

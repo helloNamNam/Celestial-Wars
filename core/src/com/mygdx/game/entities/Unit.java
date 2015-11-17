@@ -1,18 +1,19 @@
 package com.mygdx.game.entities;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
 public abstract class Unit extends SpaceObject {
-
-
-	public Unit(int id, Vector2 pos, int velocity, float direction, TextureRegion texture, float rotate) {
-		super(id, pos, velocity, direction, texture, rotate);
-	}
-
+	
 	private int hp;
 	private long lastFire;
+	private int roundFire;
+
+	public Unit(int id, Vector2 pos, double velocity, double direction, TextureRegion texture, float rotate, float xBody, float yBody, float widthBody, float heightBody) {
+		super(id, pos, velocity, direction, texture, rotate, xBody, yBody, widthBody, heightBody);
+		lastFire = 0;
+		roundFire = 0;
+	}
 	
 	public int getHp() {
 		return hp;
@@ -30,5 +31,12 @@ public abstract class Unit extends SpaceObject {
 		this.lastFire = lastFire;
 	}
 	
+	public int getRoundFire() {
+		return roundFire;
+	}
+
+	public void setRoundFire(int roundFire) {
+		this.roundFire = roundFire;
+	}
 	
 }

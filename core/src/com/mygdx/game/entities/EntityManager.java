@@ -3,19 +3,21 @@ package com.mygdx.game.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mygdx.game.entities.bullets.Bullet;
+
 
 public class EntityManager {
 	
-	List<SpaceObject> enemies;
+	List<Unit> enemies;
 	List<SpaceObject> bullets;
 	List<Player> players;
 	List<SpaceObject> removeObject;
 	
 	public EntityManager() {
-		enemies = new ArrayList<SpaceObject>();
+		enemies = new ArrayList<Unit>();
 		bullets = new ArrayList<SpaceObject>();
 		players = new ArrayList<Player>();
-		
+		removeObject = new ArrayList<SpaceObject>();
 	}
 	
 	public void render() {
@@ -62,7 +64,7 @@ public class EntityManager {
 		bullets.add(entity);
 	}
 	
-	public void addEnemy(SpaceObject enemy) {
+	public void addEnemy(Unit enemy) {
 		enemies.add(enemy);
 	}
 	
@@ -70,6 +72,18 @@ public class EntityManager {
 		players.add(player);
 	}
 	
+	public void addRemove(SpaceObject remove){
+		removeObject.add(remove);
+	}
+	
+	public void clearAll(){
+		for(int i = 0; i < bullets.size(); i++) {
+			removeObject.add(bullets.get(i));
+		}
+		for(int i = 0; i < enemies.size(); i++) {
+			removeObject.add(enemies.get(i));
+		}
+	}
 	public void dispose() {
 		for(int i = 0; i < bullets.size(); i++) {
 			if(bullets.get(i).getPos().x < 0 || bullets.get(i).getPos().x > 660 || bullets.get(i).getPos().y < 0 || bullets.get(i).getPos().y > 960) {
@@ -84,13 +98,18 @@ public class EntityManager {
 	}
 	
 	public void checkCollision(){
+
 		for(int i = 0; i < bullets.size(); i++) {
 			if((bullets.get(i).getId() == 2)){
 				for(int j = 0; j < enemies.size(); j++) {
 					if((enemies.get(j).getId() > 2) && (bullets.get(i).getBounds().overlaps((enemies.get(j).getBounds())))) {
-						System.out.println("Hits by bullet's player!!");
-						bullets.remove(bullets.get(i));
-						enemies.remove(enemies.get(j));
+						removeObject.add(bullets.get(i));
+						enemies.get(j).setHp(enemies.get(j).getHp() - 1);
+						if(enemies.get(j).getHp() == 0 && (enemies.get(j).getId() == 99 || enemies.get(j).getId() == 999)) {
+							clearAll();
+						}else if(enemies.get(j).getHp() == 0) {
+							removeObject.add(enemies.get(j));
+						}
 //						players.remove(players.get(0));
 					}
 				}
@@ -99,18 +118,30 @@ public class EntityManager {
 		
 		for(int i = 0; i < enemies.size(); i++) {
 			if((enemies.get(i).getId() > 2) && (players.get(0).getBounds().overlaps((enemies.get(i).getBounds())))) {
-				System.out.println("Bound!!");
-				enemies.remove(enemies.get(i));
+				if(enemies.get(i).getHp() - 1 == 0) {
+					enemies.get(i).setHp(0);
+					removeObject.add(enemies.get(i));
+				}else {
+					enemies.get(i).setHp(enemies.get(i).getHp() - 1);
+				}
 //				players.remove(players.get(0));
 			}
 		}
-		
+		for(int i = 0; i < removeObject.size(); i++){
+			if(removeObject.get(i) instanceof Bullet) {
+				bullets.remove(removeObject.get(i));
+			}else {
+				enemies.remove(removeObject.get(i));
+			}
+		}
+		removeObject.clear();
 		for(int i = 0; i < bullets.size(); i++) {
 			if((bullets.get(i).getId() > 2) && (players.get(0).getBounds().overlaps((bullets.get(i).getBounds())))) {
-				System.out.println("Bound!!");
 				bullets.remove(bullets.get(i));
 //				players.remove(players.get(0));
 			}
 		}
 	}
+
+
 }

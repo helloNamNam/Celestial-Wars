@@ -1,6 +1,5 @@
 package com.mygdx.game.entities;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
@@ -11,20 +10,28 @@ public abstract class SpaceObject {
 	
 	private int id;
 	private Vector2 pos;
-	private int velocity;
+	private double velocity;
 	private double direction;
 	private TextureRegion texture;
 	private Rectangle bounds;
+	private float xBody;
+	private float yBody;
+	private float widthBody;
+	private float heightBody;
 	private float rotate;
 
-	public SpaceObject(int id, Vector2 pos, int velocity, double direction, TextureRegion texture, float rotate) {
+	public SpaceObject(int id, Vector2 pos, double velocity, double direction, TextureRegion texture, float rotate, float xBody, float yBody, float widthBody, float heightBody) {
 		this.id = id;
 		this.pos = pos;
 		this.velocity = velocity;
 		this.direction = direction;
 		this.texture = texture;
 		this.rotate = rotate;
-		bounds = new Rectangle(pos.x, pos.y, texture.getRegionWidth(), texture.getRegionHeight());
+		this.xBody = xBody;
+		this.yBody = yBody;
+		this.setWidthBody(widthBody);
+		this.setHeightBody(heightBody);
+		bounds = new Rectangle(pos.x + xBody, pos.y + yBody, widthBody, heightBody);
 	}
 
 	public abstract Boolean isCollision(SpaceObject object);
@@ -42,17 +49,13 @@ public abstract class SpaceObject {
 	
 	public void setPos(float x, float y) {
 		pos.set(x, y);
-		bounds.x = x;
-		bounds.y = y;
+		bounds.x = x + xBody;
+		bounds.y = y + yBody;
 	}
 	
 	public Rectangle getBounds() {
 		return bounds;
 	}
-	
-//	public void setBounds(float x, float y, float width, float height) {
-//		bounds.set(x, y, width, height);
-//	}
 	
 	public int getId() {
 		return id;
@@ -62,7 +65,7 @@ public abstract class SpaceObject {
 		this.id = id;
 	}
 
-	public int getVelocity() {
+	public double getVelocity() {
 		return velocity;
 	}
 
@@ -80,5 +83,21 @@ public abstract class SpaceObject {
 
 	public void render() {
 		Game.batch.draw(texture, pos.x, pos.y, texture.getRegionWidth()/2, texture.getRegionHeight()/2, texture.getRegionWidth(), texture.getRegionHeight(), 1, 1, rotate);
+	}
+
+	public float getWidthBody() {
+		return widthBody;
+	}
+
+	public void setWidthBody(float widthBody) {
+		this.widthBody = widthBody;
+	}
+
+	public float getHeightBody() {
+		return heightBody;
+	}
+
+	public void setHeightBody(float heightBody) {
+		this.heightBody = heightBody;
 	}
 }

@@ -1,6 +1,5 @@
 package com.mygdx.game.entities;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.Assets;
@@ -17,8 +16,8 @@ public class Player extends Unit {
 	
 	EntityManager entityManager;
 	
-	public Player(EntityManager entityManager, Vector2 pos, int velocity, float direction, TextureRegion texture, float rotate) {
-		super(playerID, pos, velocity, direction, texture, rotate);
+	public Player(EntityManager entityManager, Vector2 pos, int velocity, float direction, TextureRegion texture, float rotate, float xBody, float yBody, float widthBody, float heightBody) {
+		super(playerID, pos, velocity, direction, texture, rotate, xBody, yBody, widthBody, heightBody);
 		setHp(5);
 //		setBounds(pos.x, pos.y, texture.getRegionWidth(), texture.getRegionHeight());
 		setLastFire(0);
@@ -47,19 +46,19 @@ public class Player extends Unit {
 	}
 	
 	public void moveUp() {
-		setPos(getPos().x, getPos().y + getVelocity());
+		setPos(getPos().x, (float) (getPos().y + getVelocity()));
 	}
 	
 	public void moveDown() {
-		setPos(getPos().x, getPos().y - getVelocity());
+		setPos(getPos().x, (float) (getPos().y - getVelocity()));
 	}
 	
 	public void moveRight() {
-		setPos(getPos().x + getVelocity(), getPos().y);
+		setPos((float) (getPos().x + getVelocity()), getPos().y);
 	}
 	
 	public void moveLeft() {
-		setPos(getPos().x - getVelocity(), getPos().y);
+		setPos((float) (getPos().x - getVelocity()), getPos().y);
 	}
 	
 	private void moveOut() {
@@ -71,30 +70,30 @@ public class Player extends Unit {
 	
 	private void addBulletone() {
 		if(System.currentTimeMillis() - getLastFire() >= 50) {
-			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getRegionWidth()/2) + getPos().x - (Assets.BULLETLINE.getRegionWidth()/2) + 10, (Assets.PLAYER.getRegionHeight()/2) + getPos().y), 50, 90, Assets.REDBEAM, 0));
-			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getRegionWidth()/2) + getPos().x - (Assets.BULLETLINE.getRegionWidth()/2) - 10, (Assets.PLAYER.getRegionHeight()/2) + getPos().y), 50, 90, Assets.REDBEAM, 0));
+			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getRegionWidth()/2 + getPos().x) - (Assets.BULLETLEVEL11.getRegionWidth()/2) - 10, Assets.PLAYER.getRegionHeight()/2 + getPos().y), 50, 90, Assets.BULLETLEVEL11, 0));
+			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getRegionWidth()/2 + getPos().x) - (Assets.BULLETLEVEL12.getRegionWidth()/2) + 10, Assets.PLAYER.getRegionHeight()/2 + getPos().y), 50, 90, Assets.BULLETLEVEL12, 0));
 			setLastFire(System.currentTimeMillis());
 		}
 	}
 	
 	private void addBullettwo() {
-		if(System.currentTimeMillis() - getLastFire() >= 50) {
-			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getRegionWidth()/2) + getPos().x - (Assets.BULLETLINE.getRegionWidth()/2) + 30, (Assets.PLAYER.getRegionHeight()) + getPos().y), 20, 66, Assets.BULLETCIRGREEN, 66));
-			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getRegionWidth()/2) + getPos().x - (Assets.BULLETLINE.getRegionWidth()/2) + 10, (Assets.PLAYER.getRegionHeight()/2) + getPos().y), 50, 90, Assets.REDBEAM, 0));
-			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getRegionWidth()/2) + getPos().x - (Assets.BULLETLINE.getRegionWidth()/2) - 10, (Assets.PLAYER.getRegionHeight()/2) + getPos().y), 50, 90, Assets.REDBEAM, 0));
-			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getRegionWidth()/2) + getPos().x - (Assets.BULLETLINE.getRegionWidth()/2) - 30, (Assets.PLAYER.getRegionHeight()) + getPos().y), 20, 114, Assets.BULLETCIRGREEN, 114));
+		if(System.currentTimeMillis() - getLastFire() >= 100) {
+			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getRegionWidth()/2 + getPos().x) - (Assets.BULLETLEVEL23.getRegionWidth()/2) - 50, Assets.PLAYER.getRegionHeight()/2 + getPos().y), 70, 90, Assets.BULLETLEVEL23, 0));
+			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getRegionWidth()/2 + getPos().x) - (Assets.BULLETLEVEL21.getRegionWidth()/2) - 15, Assets.PLAYER.getRegionHeight()/2 + getPos().y), 50, 90, Assets.BULLETLEVEL21, 0));
+			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getRegionWidth()/2 + getPos().x) - (Assets.BULLETLEVEL22.getRegionWidth()/2) + 15, Assets.PLAYER.getRegionHeight()/2 + getPos().y), 50, 90, Assets.BULLETLEVEL22, 0));
+			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getRegionWidth()/2 + getPos().x) - (Assets.BULLETLEVEL24.getRegionWidth()/2) + 50, Assets.PLAYER.getRegionHeight()/2 + getPos().y), 70, 90, Assets.BULLETLEVEL24, 0));
 			setLastFire(System.currentTimeMillis());
 		}
 	}
 	
 	private void addBulletthree() {
-		if(System.currentTimeMillis() - getLastFire() >= 10) {
-			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getRegionWidth()/2) + getPos().x - (Assets.BULLETLINE.getRegionWidth()/2) - 15, (Assets.PLAYER.getRegionHeight()/2) + getPos().y), 50, 90, Assets.REDBEAM, 0));
-			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getRegionWidth()/2) + getPos().x - (Assets.BULLETLINE.getRegionWidth()/2), (Assets.PLAYER.getRegionHeight()/2) + getPos().y), 50, 90, Assets.REDBEAM, 0));
-			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getRegionWidth()/2) + getPos().x - (Assets.BULLETLINE.getRegionWidth()/2) + 15, (Assets.PLAYER.getRegionHeight()/2) + getPos().y), 50, 90, Assets.REDBEAM, 0));
-			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getRegionWidth()/2) + getPos().x - (Assets.BULLETLINE.getRegionWidth()/2) + 30, (Assets.PLAYER.getRegionHeight()) + getPos().y), 20, 66, Assets.BULLETCIRGREEN, 66));
-			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getRegionWidth()/2) + getPos().x - (Assets.BULLETLINE.getRegionWidth()/2), (Assets.PLAYER.getRegionHeight()/2) + getPos().y), 50, 90, Assets.REDBEAM, 0));
-			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getRegionWidth()/2) + getPos().x - (Assets.BULLETLINE.getRegionWidth()/2) - 30, (Assets.PLAYER.getRegionHeight()) + getPos().y), 20, 114, Assets.BULLETCIRGREEN, 114));
+		if(System.currentTimeMillis() - getLastFire() >= 100) {
+			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getRegionWidth()/2 + getPos().x) - (Assets.BULLETLEVEL35.getRegionWidth()/2) - 60, Assets.PLAYER.getRegionHeight()/2 + getPos().y + 40), 50, 90, Assets.BULLETLEVEL35, 0));
+			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getRegionWidth()/2 + getPos().x) - (Assets.BULLETLEVEL33.getRegionWidth()/2) - 50, Assets.PLAYER.getRegionHeight()/2 + getPos().y + 20), 50, 90, Assets.BULLETLEVEL33, 0));
+			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getRegionWidth()/2 + getPos().x) - (Assets.BULLETLEVEL31.getRegionWidth()/2) - 15, Assets.PLAYER.getRegionHeight()/2 + getPos().y), 50, 90, Assets.BULLETLEVEL31, 0));
+			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getRegionWidth()/2 + getPos().x) - (Assets.BULLETLEVEL32.getRegionWidth()/2) + 15, Assets.PLAYER.getRegionHeight()/2 + getPos().y), 50, 90, Assets.BULLETLEVEL32, 0));
+			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getRegionWidth()/2 + getPos().x) - (Assets.BULLETLEVEL34.getRegionWidth()/2) + 50, Assets.PLAYER.getRegionHeight()/2 + getPos().y + 20), 50, 90, Assets.BULLETLEVEL34, 0));
+			entityManager.addBullet(new Bullet(entityManager, 2, new Vector2((Assets.PLAYER.getRegionWidth()/2 + getPos().x) - (Assets.BULLETLEVEL36.getRegionWidth()/2) + 60, Assets.PLAYER.getRegionHeight()/2 + getPos().y + 40), 50, 90, Assets.BULLETLEVEL36, 0));
 			setLastFire(System.currentTimeMillis());
 		}
 	}
