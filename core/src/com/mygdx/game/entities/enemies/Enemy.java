@@ -56,6 +56,11 @@ public class Enemy extends Unit{
 			fireStageFive();
 		}
 	}
+	
+	@Override
+	public Boolean isCollision(SpaceObject object) {
+		return null;
+	}
 
 	@Override
 	public void update() {
@@ -208,11 +213,6 @@ public class Enemy extends Unit{
 		}
 		moveObject(entityManager);
 		fire();
-	}
-
-	@Override
-	public Boolean isCollision(SpaceObject object) {
-		return null;
 	}
 
 	private void fireStageOne() {
