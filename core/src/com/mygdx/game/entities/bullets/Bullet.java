@@ -2,6 +2,7 @@ package com.mygdx.game.entities.bullets;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.Assets;
 import com.mygdx.game.entities.EntityManager;
 import com.mygdx.game.entities.ItemObject;
 
@@ -16,6 +17,25 @@ public class Bullet extends ItemObject{
 
 	@Override
 	public void update() {
+		if(getId() == 1005){
+			if(System.currentTimeMillis()/100%6 ==0){
+				int ran = (int) (Math.random()*3);
+				if(ran == 0){
+					setTexture(Assets.BULLETWATER1);
+				}
+				if(ran == 1){
+					setTexture(Assets.BULLETWATER2);
+				}
+				if(ran == 2){
+					setTexture(Assets.BULLETWATER3);
+				}
+				else{
+					setTexture(Assets.BULLETWATER4);
+				}	
+				setRotate(ran);
+			}
+			
+		}
 		moveObject(entityManager);
 	}
 }
