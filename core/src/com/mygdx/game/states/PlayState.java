@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -43,6 +44,10 @@ public class PlayState extends State {
 	private BitmapFont font;
 	private LabelStyle style;
 	private Label scoreGame;
+	
+	private Sprite heartA;
+	private Sprite heartB;
+	private Sprite heartC;
 	
 	private Music stage1;
 	private Music stage2;
@@ -105,6 +110,14 @@ public class PlayState extends State {
 		scoreStage.addActor(scoreGame);
 		scoreGame.setFontScale(5f);
 		Gdx.input.setInputProcessor(scoreStage);
+		
+		heartA = new Sprite(new  Texture("images/heart.png"));
+		heartB = new Sprite(new  Texture("images/heart2.png"));
+		heartC = new Sprite(new  Texture("images/heart3.png"));
+		
+		heartA.setBounds(800, 200, heartA.getWidth(), heartA.getHeight());
+		heartB.setBounds(900, 200, heartB.getWidth(), heartB.getHeight());
+		heartC.setBounds(1000, 200, heartC.getWidth(), heartC.getHeight());
 //		timeControl.setTime(980);
 	}
 
@@ -178,6 +191,10 @@ public class PlayState extends State {
 		entityManager.render();
 		entityManager.update();
 		Game.batch.draw(background, 0, 0);
+		
+		heartA.draw(Game.batch);
+		heartB.draw(Game.batch);
+		heartC.draw(Game.batch);
 		
 		Game.batch.end();
 		scoreStage.getActors();

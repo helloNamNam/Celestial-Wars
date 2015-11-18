@@ -40,9 +40,26 @@ public class Assets {
 	public static TextureRegion BULLETLEVEL35 = new TextureRegion(new Texture("bullets/OrangeLight.png"));
 	public static TextureRegion BULLETLEVEL36 = new TextureRegion(new Texture("bullets/OrangeLightF.png"));
 	
+<<<<<<< HEAD
 	public static TextureRegion MINIBOSS = new TextureRegion(new Texture("alienblaster.png"));
 	public static TextureRegion BULLETRED = new TextureRegion(new Texture("Bullets_test.png"));
 	public static TextureRegion BULLETREDFLOWER = new TextureRegion(new Texture("asterix_red.gif"));
 	public static TextureRegion BULLETGREENLEAVE = new TextureRegion(new Texture("118px-Leaf_icon_15.svg.png"));
 	public static TextureRegion ENEMYEIEI = new TextureRegion(new Texture("eiei.png"));
+=======
+	public static TextureRegion BULLETWATER1 = new TextureRegion(new Texture("bullets/Bulletwater1.png"));
+	public static TextureRegion BULLETWATER2 = new TextureRegion(new Texture("bullets/Bulletwater2.png"));
+	public static TextureRegion BULLETWATER3 = new TextureRegion(new Texture("bullets/Bulletwater3.png"));
+	public static TextureRegion BULLETWATER4 = new TextureRegion(new Texture("bullets/Bulletwater4.png"));
+	public static TextureRegion DRAGONHEAD = new TextureRegion(new Texture("bullets/DRAGONHEAD.png"));
+	public static TextureRegion DRAGONBODY = new TextureRegion(new Texture("bullets/DRAGONBODY.png"));
+	public static TextureRegion BULLETGREENCIR = new TextureRegion(new Texture("bullets/BulletCirGreen.png"));
+	public static TextureRegion BULLETGREENBEAN = new TextureRegion(new Texture("bullets/BulletGreenBean.png"));
+	public static TextureRegion BULLETPINKTRI = new TextureRegion(new Texture("bullets/BulletPinkTri.png"));
+	public static TextureRegion BULLETPINKSTAR = new TextureRegion(new Texture("bullets/BulletPinkStar.png"));
+	public static TextureRegion BULLETREDBUTTER = new TextureRegion(new Texture("bullets/BulletRedButter.png"));
+	public static TextureRegion BULLETBLUEMENTOS = new TextureRegion(new Texture("bullets/BulletBlueMentos.png"));
+	public static TextureRegion BULLETPURLINE = new TextureRegion(new Texture("bullets/Bullpurline.png"));
+	public static TextureRegion BULLETBLURLINE = new TextureRegion(new Texture("bullets/BullBluline.png"));
+>>>>>>> origin/master
 }

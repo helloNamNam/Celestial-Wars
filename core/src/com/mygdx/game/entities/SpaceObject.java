@@ -112,4 +112,21 @@ public abstract class SpaceObject {
 	public void setHeightBody(float heightBody) {
 		this.heightBody = heightBody;
 	}
+
+	public TextureRegion getTexture() {
+		return texture;
+	}
+
+	public void setTexture(TextureRegion texture) {
+		this.texture = texture;
+	}
+
+	public float getRotate() {
+		return rotate;
+	}
+
+	public void setRotate(float rotate) {
+		this.rotate = rotate;
+	}
+	
 }
