@@ -14,14 +14,13 @@ import com.mygdx.game.entities.enemies.Enemy;
 
 public class PlayState extends State {
 	
-	public final static float startX = 50;
-	public final static float startY = 50;
 	public static int stage = 1;
 
 	public int loop;
 	public int counterID;
 	
 	public Texture background;
+	public Texture backgroundStage;
 	
 	public Player player;
 	public Enemy enemy;
@@ -31,14 +30,15 @@ public class PlayState extends State {
 	//constructor
 	public PlayState(GameStateManager gsm) {
 		super(gsm);
-		counterID = 999;
+		counterID = 6;
 		entityManager = new EntityManager();
-		player = new Player(entityManager, new Vector2(100, 50), 4, -1, Assets.PLAYER, 0, 15, 28, 12, 12);
+		player = new Player(entityManager, new Vector2(330 - (Assets.PLAYER.getRegionWidth()/2), 25), 4, -1, Assets.PLAYER, 0, 15, 28, 12, 12);
 		entityManager.addPlayer(player);
 		background = loadTexture("playbg.png");
+		backgroundStage = loadTexture("images/stageoneBG.jpg");
 		timeControl = new TimeControl();
 		new Thread(timeControl).start();
-		timeControl.setTime(980);
+//		timeControl.setTime(980);
 	}
 
 	//check input from user
@@ -87,6 +87,7 @@ public class PlayState extends State {
 	@Override
 	public void render() {
 		Game.batch.begin();
+		Game.batch.draw(backgroundStage, 0, 0);
 		entityManager.render();
 		entityManager.update();
 		Game.batch.draw(background, 0, 0);

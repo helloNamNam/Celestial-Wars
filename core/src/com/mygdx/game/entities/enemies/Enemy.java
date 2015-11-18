@@ -271,7 +271,7 @@ public class Enemy extends Unit{
 							entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETGREENBIG.getRegionWidth()/2) + 10, (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 4, 280, Assets.BULLETGREENBIG, 280));
 							entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETGREENBIG.getRegionWidth()/2) + 10, (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 4, 300, Assets.BULLETGREENBIG, 300));
 							degree++;
-							for(int i = 0; i < 30; i++){
+							for(int i = 0; i < 15; i++){
 								entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.BOSSONE.getRegionWidth()/2) + getPos().x - (Assets.BULLETCIRGREEN.getRegionWidth()/2) + 10, (Assets.BOSSONE.getRegionHeight()/2) + getPos().y), 2 + Math.random()*4, 225 + Math.random()*90, Assets.BULLETCIRGREEN, 0));
 							}
 							setLastFire(System.currentTimeMillis());
@@ -329,7 +329,7 @@ public class Enemy extends Unit{
 				if((time.getTime() >= 1200 && getRoundFire() % 10 == 0) || (time.getTime() > 1400 && getRoundFire() % 10 == 4)){
 					setRoundFire(getRoundFire() + 1);
 				}
-				if(getHp() - 1 == 0) {
+				if(getHp() - 1 == 0 || getHp() - 2 == 0) {
 					time.setTime(1600);
 					PlayState.stage = 2;
 				}else if(time.getTime() >= 1600) {
