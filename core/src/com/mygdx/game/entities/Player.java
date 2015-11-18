@@ -4,11 +4,13 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.Assets;
 import com.mygdx.game.entities.bullets.Bullet;
+import com.mygdx.game.states.PlayState;
 
 public class Player extends Unit {
 
 	public final static int playerID = 1;
 	public final static int startBulletLevel = 1;
+	public static int heartPoint = 3;
 	public int bulletLevel;
 //	public final int WIDTH = 50;
 //	public final int HEIGHT = 50;
@@ -18,7 +20,7 @@ public class Player extends Unit {
 	
 	public Player(EntityManager entityManager, Vector2 pos, int velocity, float direction, TextureRegion texture, float rotate, float xBody, float yBody, float widthBody, float heightBody) {
 		super(playerID, pos, velocity, direction, texture, rotate, xBody, yBody, widthBody, heightBody);
-		setHp(5);
+		setHp(1);
 //		setBounds(pos.x, pos.y, texture.getRegionWidth(), texture.getRegionHeight());
 		setLastFire(0);
 		this.entityManager = entityManager;
@@ -40,6 +42,13 @@ public class Player extends Unit {
 		if(bulletLevel > 3){ bulletLevel = 1; }
 	}
 
+	public void die(){
+//		heartPoint --;
+		if(heartPoint > 0){
+			setPos(PlayState.pointStartX, PlayState.pointStartY);
+			setHp(1);
+		}
+	}
 	@Override
 	public void update() {
 		moveOut();

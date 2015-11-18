@@ -11,18 +11,24 @@ public class EntityManager {
 	List<Unit> enemies;
 	List<SpaceObject> bullets;
 	List<Player> players;
+	List<SpaceObject> items;
 	List<SpaceObject> removeObject;
 	
 	public EntityManager() {
 		enemies = new ArrayList<Unit>();
 		bullets = new ArrayList<SpaceObject>();
 		players = new ArrayList<Player>();
+		items = new ArrayList<SpaceObject>();
 		removeObject = new ArrayList<SpaceObject>();
 	}
 	
 	public void render() {
 		for(SpaceObject bullet: bullets) {
 			bullet.render();
+		}
+		
+		for(SpaceObject item: items) {
+			item.render();
 		}
 		
 		for(SpaceObject enemy: enemies) {
@@ -46,6 +52,12 @@ public class EntityManager {
 			bullet.update();
 		}
 		
+		int lengthItems = items.size();
+		for(int index = 0;index < lengthItems; ++index) {
+			SpaceObject item = items.get(index);
+			item.update();
+		}
+		
 		int lengthEnemies = enemies.size();
 		for(int index = 0;index < lengthEnemies; ++index) {
 			SpaceObject enemy = enemies.get(index);
@@ -58,9 +70,8 @@ public class EntityManager {
 		}
 		checkCollision();
 	}
-	
+
 	public void addBullet(SpaceObject entity) {
-//		System.out.println("add Bullet");
 		bullets.add(entity);
 	}
 	
@@ -72,8 +83,16 @@ public class EntityManager {
 		players.add(player);
 	}
 	
+	public void addItem(SpaceObject item) {
+		items.add(item);
+	}
+	
 	public void addRemove(SpaceObject remove){
 		removeObject.add(remove);
+	}
+	
+	public List<Player> getPlayers() {
+		return players;
 	}
 	
 	public void clearAll(){
@@ -110,7 +129,6 @@ public class EntityManager {
 						}else if(enemies.get(j).getHp() == 0) {
 							removeObject.add(enemies.get(j));
 						}
-//						players.remove(players.get(0));
 					}
 				}
 			}
@@ -124,7 +142,16 @@ public class EntityManager {
 				}else {
 					enemies.get(i).setHp(enemies.get(i).getHp() - 1);
 				}
-//				players.remove(players.get(0));
+				players.get(0).die();
+			}
+		}
+		for(int i = 0; i < items.size(); i++) {
+			if(items.get(i).getId() == 1 && (players.get(0).getBounds().overlaps((items.get(i).getBounds())))) {
+				players.get(0).heartPoint += 1;
+				items.remove(items.get(i));
+			}else {
+				players.get(0).bulletLevel += 1;
+				items.remove(items.get(i));
 			}
 		}
 		for(int i = 0; i < removeObject.size(); i++){
@@ -138,7 +165,7 @@ public class EntityManager {
 		for(int i = 0; i < bullets.size(); i++) {
 			if((bullets.get(i).getId() > 2) && (players.get(0).getBounds().overlaps((bullets.get(i).getBounds())))) {
 				bullets.remove(bullets.get(i));
-//				players.remove(players.get(0));
+				players.get(0).die();
 			}
 		}
 	}
