@@ -3,16 +3,19 @@ package com.mygdx.game.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.mygdx.game.entities.bullets.Bullet;
 
 
 public class EntityManager {
-	
+	public static int score = 0;
 	List<Unit> enemies;
 	List<SpaceObject> bullets;
 	List<Player> players;
 	List<SpaceObject> items;
 	List<SpaceObject> removeObject;
+	public static Sound mondead;
 	
 	public EntityManager() {
 		enemies = new ArrayList<Unit>();
@@ -20,6 +23,7 @@ public class EntityManager {
 		players = new ArrayList<Player>();
 		items = new ArrayList<SpaceObject>();
 		removeObject = new ArrayList<SpaceObject>();
+		mondead = Gdx.audio.newSound(Gdx.files.internal("Sounds/mondead.mp3"));
 	}
 	
 	public void render() {
@@ -124,9 +128,21 @@ public class EntityManager {
 					if((enemies.get(j).getId() > 2) && (bullets.get(i).getBounds().overlaps((enemies.get(j).getBounds())))) {
 						removeObject.add(bullets.get(i));
 						enemies.get(j).setHp(enemies.get(j).getHp() - 1);
+						if(enemies.get(j).getId() != 99 && enemies.get(j).getId() != 999){
+							score += 100 + Math.random()*50;
+						}else{
+							score += 200 + Math.random()*50;
+						}
 						if(enemies.get(j).getHp() == 0 && (enemies.get(j).getId() == 99 || enemies.get(j).getId() == 999)) {
+							if(enemies.get(j).getId() == 99) {
+								score += 100000;
+							}else{
+								score += 500000;
+							}
+							
 							clearAll();
 						}else if(enemies.get(j).getHp() == 0) {
+							score += 500;
 							removeObject.add(enemies.get(j));
 						}
 					}
@@ -159,6 +175,7 @@ public class EntityManager {
 				bullets.remove(removeObject.get(i));
 			}else {
 				enemies.remove(removeObject.get(i));
+				mondead.play();
 			}
 		}
 		removeObject.clear();

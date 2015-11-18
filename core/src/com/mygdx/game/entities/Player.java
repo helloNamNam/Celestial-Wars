@@ -1,5 +1,7 @@
 package com.mygdx.game.entities;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.Assets;
@@ -12,6 +14,7 @@ public class Player extends Unit {
 	public final static int startBulletLevel = 1;
 	public static int heartPoint = 3;
 	public int bulletLevel;
+	private Sound shoot;
 //	public final int WIDTH = 50;
 //	public final int HEIGHT = 50;
 //	public final float SPEED = 200;
@@ -21,6 +24,7 @@ public class Player extends Unit {
 	public Player(EntityManager entityManager, Vector2 pos, int velocity, float direction, TextureRegion texture, float rotate, float xBody, float yBody, float widthBody, float heightBody) {
 		super(playerID, pos, velocity, direction, texture, rotate, xBody, yBody, widthBody, heightBody);
 		setHp(1);
+		shoot = Gdx.audio.newSound(Gdx.files.internal("Sounds/shoot.mp3"));
 //		setBounds(pos.x, pos.y, texture.getRegionWidth(), texture.getRegionHeight());
 		setLastFire(0);
 		this.entityManager = entityManager;
@@ -28,6 +32,7 @@ public class Player extends Unit {
 	}
 
 	public void fire() {
+		shoot.play(1f);
 		if(bulletLevel == 1) {
 			addBulletone();
 		}else if(bulletLevel == 2) {

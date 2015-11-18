@@ -2,8 +2,17 @@ package com.mygdx.game.states;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.utils.Align;
 import com.mygdx.game.Assets;
 import com.mygdx.game.Game;
 import com.mygdx.game.TimeControl;
@@ -30,9 +39,52 @@ public class PlayState extends State {
 	public EntityManager entityManager;
 	private TimeControl timeControl;
 	
+	private Stage scoreStage;
+	private BitmapFont font;
+	private LabelStyle style;
+	private Label scoreGame;
+	
+	private Music stage1;
+	private Music stage2;
+	private Music stage3;
+	private Music stage4;
+	private Music stage5;
+	private Music stage6;
+	public static Music boss1;
+	public static Music boss2;
+	public static Music boss3;
+	public static Music boss4;
+	public static Music boss5;
+	public static Music boss6;
+	private Sound alarm;
+	
+	public static Music getBoss1() {
+		return boss1;
+	}
+	
+	public static void setBoss1(Music boss1) {
+		PlayState.boss1 = boss1;
+	}
+	
 	//constructor
 	public PlayState(GameStateManager gsm) {
 		super(gsm);
+		stage1 = Gdx.audio.newMusic(Gdx.files.internal("Sounds/stage1.mp3"));
+		stage2 = Gdx.audio.newMusic(Gdx.files.internal("Sounds/stage2.mp3"));
+		stage3 = Gdx.audio.newMusic(Gdx.files.internal("Sounds/stage3.mp3"));
+		stage4 = Gdx.audio.newMusic(Gdx.files.internal("Sounds/stage4.mp3"));
+		stage5 = Gdx.audio.newMusic(Gdx.files.internal("Sounds/stage5.mp3"));
+		stage6 = Gdx.audio.newMusic(Gdx.files.internal("Sounds/stage6.mp3"));
+		boss1 = Gdx.audio.newMusic(Gdx.files.internal("Sounds/boss1.mp3"));
+		boss2 = Gdx.audio.newMusic(Gdx.files.internal("Sounds/boss2.mp3"));
+		boss3 = Gdx.audio.newMusic(Gdx.files.internal("Sounds/boss3.mp3"));
+		boss4 = Gdx.audio.newMusic(Gdx.files.internal("Sounds/boss4.mp3"));
+		boss5 = Gdx.audio.newMusic(Gdx.files.internal("Sounds/boss5.mp3"));
+		boss6 = Gdx.audio.newMusic(Gdx.files.internal("Sounds/boss6.mp3"));
+		alarm = Gdx.audio.newSound(Gdx.files.internal("Sounds/alram.mp3"));
+		stage1.play();
+		stage1.setVolume(0.2f);
+		stage1.setLooping(true);
 		counterID = 6;
 		entityManager = new EntityManager();
 		player = new Player(entityManager, new Vector2(pointStartX, pointStartY), 4, -1, Assets.PLAYER, 0, 15, 28, 12, 12);
@@ -41,6 +93,18 @@ public class PlayState extends State {
 		backgroundStage = loadTexture("images/stageoneBG.jpg");
 		timeControl = new TimeControl();
 		new Thread(timeControl).start();
+		
+		scoreStage = new Stage();
+		font = new BitmapFont();
+		font.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		style = new LabelStyle(font, Color.WHITE);
+		
+		scoreGame = new Label("0", style);
+		scoreGame.setBounds(950, 800, 300, 30);
+		scoreGame.setAlignment(Align.right);
+		scoreStage.addActor(scoreGame);
+		scoreGame.setFontScale(5f);
+		Gdx.input.setInputProcessor(scoreStage);
 //		timeControl.setTime(980);
 	}
 
@@ -68,6 +132,22 @@ public class PlayState extends State {
 		}
 		if(Gdx.input.isKeyPressed(Keys.V)) {
 			System.out.println(timeControl.getTime());
+		}
+		if(Gdx.input.isKeyPressed(Keys.ESCAPE)){
+			gsm.set(new MenuState(gsm));
+			stage1.dispose();
+			stage2.dispose();
+			stage3.dispose();
+			stage4.dispose();
+			stage5.dispose();
+			stage6.dispose();
+			boss1.dispose();
+			boss2.dispose();
+			boss3.dispose();
+			boss4.dispose();
+			boss5.dispose();
+			boss6.dispose();
+			dispose();
 		}
 //		System.out.println(player.getPos().x + ", " + player.getPos().y);
 	}
@@ -98,6 +178,14 @@ public class PlayState extends State {
 		Game.batch.draw(background, 0, 0);
 		
 		Game.batch.end();
+		scoreStage.getActors();
+//		for(int i = 0; i < scoreStage.getActors().size; i++)
+//		{
+//			if (scoreStage.getActors().get(i).equals())
+//		}
+		scoreGame.setText(EntityManager.score+"");
+		System.out.println(EntityManager.score);
+		scoreStage.draw();
 	}
 
 	@Override
@@ -184,6 +272,11 @@ public class PlayState extends State {
 			counterID++;
 		}
 		if(timeControl.getTime() == 1000 && loop == 1) {
+			stage1.dispose();
+			alarm.play();
+			boss1.play();
+			boss1.setVolume((float) 0.2);
+			boss1.setLooping(true);
 			entityManager.addEnemy(new Enemy(entityManager, 999, 1620, new Vector2(((620 - Assets.BOSSONE.getRegionWidth()) / 2) + 20, 980), 3, 270, Assets.BOSSONE, 0, 65, 45, 225, 230, timeControl));
 			counterID = 6;
 		}

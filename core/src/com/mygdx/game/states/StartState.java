@@ -2,6 +2,7 @@ package com.mygdx.game.states;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.game.Game;
 
@@ -10,12 +11,17 @@ public class StartState extends State{
 	private Texture background;
 	private Texture startBtn;
 	private float time = 0;
+	private Music title;
 	
 	//constructor
 	public StartState(GameStateManager gsm) {
 		super(gsm);
 		background = loadTexture("backgroundCW.jpg");
 		startBtn = loadTexture("startBtn.png");
+		title = Gdx.audio.newMusic(Gdx.files.internal("Sounds/title.mp3"));
+		
+		title.play();
+		title.setLooping(true);
 	}
 
 	//check input from user and go to next state
@@ -24,6 +30,7 @@ public class StartState extends State{
 		if(Gdx.input.isKeyPressed(Keys.ANY_KEY)) {
 //			gsm.set(new PlayState(gsm));
 			gsm.set(new MenuState(gsm));
+			title.dispose();
 			dispose();
 		}
 	}

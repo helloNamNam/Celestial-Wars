@@ -1,5 +1,7 @@
 package com.mygdx.game.entities.enemies;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.Assets;
@@ -16,6 +18,10 @@ public class Enemy extends Unit{
 	private int degree;
 	private float random;
 	private TimeControl time;
+	private Music victory;
+	private Music bossdead;
+	private Music victorycon;
+	private Music nokill;
 	
 	public Enemy(EntityManager entityManager, int id, int hp, Vector2 pos, double velocity, double direction, TextureRegion texture, float rotate, float xBody, float yBody, float widthBody, float heightBody) {
 		super(id, pos, velocity, direction, texture, rotate, xBody, yBody, widthBody, heightBody);
@@ -33,6 +39,10 @@ public class Enemy extends Unit{
 	}
 
 	public void fire() {
+		victory = Gdx.audio.newMusic(Gdx.files.internal("Sounds/victory.mp3"));
+		bossdead = Gdx.audio.newMusic(Gdx.files.internal("Sounds/bossdead.mp3"));
+		victorycon = Gdx.audio.newMusic(Gdx.files.internal("Sounds/victorycon.mp3"));
+		nokill = Gdx.audio.newMusic(Gdx.files.internal("Sounds/nokillboss.mp3"));
 		if(PlayState.stage == 1) {
 			fireStageOne();
 		}else if(PlayState.stage == 5) {
@@ -350,8 +360,15 @@ public class Enemy extends Unit{
 			}
 			if(getHp() - 1 == 0 || getHp() - 2 == 0) {
 				time.setTime(1600);
+				bossdead.play();
+				victory.play();
+				victorycon.play();
+				victorycon.setLooping(true);
+				PlayState.getBoss1().dispose();
 				PlayState.stage = 2;
 			}else if(time.getTime() >= 1600) {
+				PlayState.getBoss1().dispose();
+				nokill.play();
 				entityManager.clearAll();
 				entityManager.addRemove(this);
 			}

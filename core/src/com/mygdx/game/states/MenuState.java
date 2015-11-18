@@ -2,6 +2,8 @@ package com.mygdx.game.states;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -42,6 +44,10 @@ public class MenuState extends State{
 
 	private float al_credit_state=0f;
 	
+	public static Music menu;
+	private Sound button;
+	private Sound enter;
+	
 	
 	//constructor
 	public MenuState(GameStateManager gsm) {
@@ -50,6 +56,11 @@ public class MenuState extends State{
 	}
 	
 	public void create () {
+		menu = Gdx.audio.newMusic(Gdx.files.internal("Sounds/menu.mp3"));
+		button = Gdx.audio.newSound(Gdx.files.internal("Sounds/button.mp3"));
+		enter = Gdx.audio.newSound(Gdx.files.internal("Sounds/Enter.mp3"));
+		menu.play();
+		menu.setLooping(true);
 		spriteBatch = new SpriteBatch();
 		
 		bg_credit = new Sprite(new Texture(Gdx.files.internal("images/Creditpic.png")));
@@ -91,10 +102,15 @@ public class MenuState extends State{
 
 	@Override
 	public void handleInput() {
-		if(Gdx.input.isKeyJustPressed(Keys.UP))
+		if(Gdx.input.isKeyJustPressed(Keys.UP)){
 			keyCode--;
-		if(Gdx.input.isKeyJustPressed(Keys.DOWN))
+			button.play();
+		}
+		if(Gdx.input.isKeyJustPressed(Keys.DOWN)){
 			keyCode++;
+			button.play();
+		}
+		
 		if(Gdx.input.isKeyJustPressed(Keys.ESCAPE))
 			al_credit_state=0;
 	}
@@ -132,9 +148,11 @@ public class MenuState extends State{
 		if(keyCode > 6)	keyCode = 1;
 		if(Gdx.input.isKeyJustPressed(Keys.ENTER) && stateTime >=0.5)
 		{
+			enter.play();
 			if (al_sing == 1)
 			{
 				//go to single player
+				menu.dispose();
 				gsm.set(new PlayState(gsm));
 			}
 			if (al_mul == 1)
