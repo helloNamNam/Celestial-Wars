@@ -18,7 +18,7 @@ public class Bullet extends ItemObject{
 
 	@Override
 	public void update() {
-<<<<<<< HEAD
+
 		if(PlayState.stage == 2){
 			if(getId() == 398){
 				if(getPos().x > 620){
@@ -43,7 +43,7 @@ public class Bullet extends ItemObject{
 					}
 				}
 			}
-=======
+
 		if(getId() == 1005){
 			if(System.currentTimeMillis()/100%6 ==0){
 				int ran = (int) (Math.random()*3);
@@ -61,9 +61,8 @@ public class Bullet extends ItemObject{
 				}	
 				setRotate(ran);
 			}
-			
->>>>>>> origin/master
 		}
 		moveObject(entityManager);
+		}
 	}
 }

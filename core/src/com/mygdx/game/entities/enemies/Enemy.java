@@ -16,7 +16,6 @@ public class Enemy extends Unit{
 	
 	private EntityManager entityManager;
 	private int degree;
-	private int count = 0;
 	private float random;
 	private TimeControl time;
 	private int count, round, delay;
@@ -47,15 +46,12 @@ public class Enemy extends Unit{
 		nokill = Gdx.audio.newMusic(Gdx.files.internal("Sounds/nokillboss.mp3"));
 		if(PlayState.stage == 1) {
 			fireStageOne();
-<<<<<<< HEAD
 		}else if(PlayState.stage == 2) {
 			fireStageTwo();
-=======
 		}else if(PlayState.stage == 3) {
 			fireStageThree();
 		}else if(PlayState.stage == 4) {
 			fireStageFour();
->>>>>>> origin/master
 		}else if(PlayState.stage == 5) {
 			fireStageFive();
 		}
@@ -532,7 +528,6 @@ public class Enemy extends Unit{
 			}
 		}
 	}
-<<<<<<< HEAD
 	
 	private void fireStageTwo() {
 		if(getId() == 301) {
@@ -577,64 +572,9 @@ public class Enemy extends Unit{
 			if(System.currentTimeMillis() - getLastFire() >= 200 && getVelocity() == 0){
 				for(int i = 0; i < 360; i += 10){
 					entityManager.addBullet(new Bullet(entityManager, 399, new Vector2((Assets.MINIBOSS.getRegionWidth()/2) + getPos().x - (Assets.BULLETLINE.getRegionWidth()/2), (Assets.MINIBOSS.getRegionHeight()/2) + getPos().y-30), 3, i, Assets.BULLETLINE, i));
-=======
-	private void fireStageThree() {
-		if(getId() >=6 && getId() <= 25){
-			if(System.currentTimeMillis() - getLastFire() >= 2000) {
-
-				for(int i = 0;i<=8;i++){
-					entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.ENEMY.getRegionWidth()/2) + getPos().x - (Assets.BULLETWATER1.getRegionWidth()/2) + 10, (Assets.ENEMY.getRegionHeight()/2) + getPos().y), 3, 225+i*10, Assets.BULLETSTAR, 225+i*10));
 				}
-				setLastFire(System.currentTimeMillis());
 			}
 		}
-		//shootingstar
-		if(getId() == 26){
-
-
-
-			if(System.currentTimeMillis() - getLastFire() >= 500) {
-				for(int i= 8; i<=40; i++){
-					entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.ENEMY.getRegionWidth()/2) + getPos().x - (Assets.BULLETWATER1.getRegionWidth()/2) + 10, (Assets.ENEMY.getRegionHeight()/2) + getPos().y), i/8, 18+i*2, Assets.BULLETSTAR, 210));
-					entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.ENEMY.getRegionWidth()/2) + getPos().x - (Assets.BULLETWATER1.getRegionWidth()/2) + 10, (Assets.ENEMY.getRegionHeight()/2) + getPos().y), i/8, 18-i*2, Assets.BULLETSTAR, 210));
-				}
-				count++;
-				setLastFire((long) (System.currentTimeMillis() + Math.random()*250));
-			}
-		}
-		if(getId() == 27){
-			if(System.currentTimeMillis() - getLastFire() >= 500) {
-				for(int i= 8; i<=40; i++){
-					entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.ENEMY.getRegionWidth()/2) + getPos().x - (Assets.BULLETWATER1.getRegionWidth()/2) + 10, (Assets.ENEMY.getRegionHeight()/2) + getPos().y), i/8, 162+i*2, Assets.BULLETSTAR, 330));
-					entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.ENEMY.getRegionWidth()/2) + getPos().x - (Assets.BULLETWATER1.getRegionWidth()/2) + 10, (Assets.ENEMY.getRegionHeight()/2) + getPos().y), i/8, 162-i*2, Assets.BULLETSTAR, 330));
-				}
-				count++;
-				setLastFire((long) (System.currentTimeMillis() + Math.random()*250));
-			}
-		}
-
-		//sin
-
-		if(getId() >=28 && getId() <= 47){
-			setPos(getPos().x, 400+(float)(Math.sin(count*0.05)*40));
-			setRotate((float) (count*0.05));
-			count++;
-			if(System.currentTimeMillis() - getLastFire() >= 1000) {
-				for(int i= 0; i<= 7; i++){
-					entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.ENEMY.getRegionWidth()/2) + getPos().x - (Assets.BULLETWATER1.getRegionWidth()/2) + 10, (Assets.ENEMY.getRegionHeight()/2) + getPos().y), 4, i*360/8+360/16*(-(count%2)), Assets.BULLETSTAR, i*360/8+360/16*(-(count%2))));
-				}
-				setLastFire(System.currentTimeMillis());
-			}
-			if(System.currentTimeMillis() - getLastFire() >= 2000) {
-
-				for(int i = 0;i<=8;i++){
-					entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.ENEMY.getRegionWidth()/2) + getPos().x - (Assets.BULLETWATER1.getRegionWidth()/2) + 10, (Assets.ENEMY.getRegionHeight()/2) + getPos().y), 3, 225+i*10, Assets.BULLETSTAR, 225+i*10));
->>>>>>> origin/master
-				}
-				setLastFire(System.currentTimeMillis());
-			}
-		}
-<<<<<<< HEAD
 		if(getId() >= 305 && getId() <= 324){
 			if(getId() % 2 == 0){
 				random = (float) (Math.random()*160 + 190);
@@ -752,9 +692,60 @@ public class Enemy extends Unit{
 			}
 		}
 	}
-	
-=======
 
+	private void fireStageThree() {
+		if(getId() >=6 && getId() <= 25){
+			if(System.currentTimeMillis() - getLastFire() >= 2000) {
+
+				for(int i = 0;i<=8;i++){
+					entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.ENEMY.getRegionWidth()/2) + getPos().x - (Assets.BULLETWATER1.getRegionWidth()/2) + 10, (Assets.ENEMY.getRegionHeight()/2) + getPos().y), 3, 225+i*10, Assets.BULLETSTAR, 225+i*10));
+				}
+				setLastFire(System.currentTimeMillis());
+			}
+		}
+		//shootingstar
+		if(getId() == 26){
+			if(System.currentTimeMillis() - getLastFire() >= 500) {
+				for(int i= 8; i<=40; i++){
+					entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.ENEMY.getRegionWidth()/2) + getPos().x - (Assets.BULLETWATER1.getRegionWidth()/2) + 10, (Assets.ENEMY.getRegionHeight()/2) + getPos().y), i/8, 18+i*2, Assets.BULLETSTAR, 210));
+					entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.ENEMY.getRegionWidth()/2) + getPos().x - (Assets.BULLETWATER1.getRegionWidth()/2) + 10, (Assets.ENEMY.getRegionHeight()/2) + getPos().y), i/8, 18-i*2, Assets.BULLETSTAR, 210));
+				}
+				count++;
+				setLastFire((long) (System.currentTimeMillis() + Math.random()*250));
+			}
+		}
+		if(getId() == 27){
+			if(System.currentTimeMillis() - getLastFire() >= 500) {
+				for(int i= 8; i<=40; i++){
+					entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.ENEMY.getRegionWidth()/2) + getPos().x - (Assets.BULLETWATER1.getRegionWidth()/2) + 10, (Assets.ENEMY.getRegionHeight()/2) + getPos().y), i/8, 162+i*2, Assets.BULLETSTAR, 330));
+					entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.ENEMY.getRegionWidth()/2) + getPos().x - (Assets.BULLETWATER1.getRegionWidth()/2) + 10, (Assets.ENEMY.getRegionHeight()/2) + getPos().y), i/8, 162-i*2, Assets.BULLETSTAR, 330));
+				}
+				count++;
+				setLastFire((long) (System.currentTimeMillis() + Math.random()*250));
+			}
+		}
+
+		//sin
+
+		if(getId() >=28 && getId() <= 47){
+			setPos(getPos().x, 400+(float)(Math.sin(count*0.05)*40));
+			setRotate((float) (count*0.05));
+			count++;
+			if(System.currentTimeMillis() - getLastFire() >= 1000) {
+				for(int i= 0; i<= 7; i++){
+					entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.ENEMY.getRegionWidth()/2) + getPos().x - (Assets.BULLETWATER1.getRegionWidth()/2) + 10, (Assets.ENEMY.getRegionHeight()/2) + getPos().y), 4, i*360/8+360/16*(-(count%2)), Assets.BULLETSTAR, i*360/8+360/16*(-(count%2))));
+				}
+				setLastFire(System.currentTimeMillis());
+			}
+			if(System.currentTimeMillis() - getLastFire() >= 2000) {
+
+				for(int i = 0;i<=8;i++){
+					entityManager.addBullet(new Bullet(entityManager, 5, new Vector2((Assets.ENEMY.getRegionWidth()/2) + getPos().x - (Assets.BULLETWATER1.getRegionWidth()/2) + 10, (Assets.ENEMY.getRegionHeight()/2) + getPos().y), 3, 225+i*10, Assets.BULLETSTAR, 225+i*10));
+
+				}
+				setLastFire(System.currentTimeMillis());
+			}
+		}
 		if(getId() == 49){
 
 			if(getPos().x <320){
@@ -859,9 +850,6 @@ public class Enemy extends Unit{
 				setLastFire((long) (System.currentTimeMillis() + Math.random()*250));
 			}
 		}
-
-
-
 		//boss
 		if(getId() == 134){
 			if(getPos().y <= 420){
@@ -869,7 +857,6 @@ public class Enemy extends Unit{
 			}
 			if(getVelocity() == 0 && round ==0){
 				if(System.currentTimeMillis() - getLastFire() >= 1000){
-
 					for(int i = 0; i<= 3; i++){
 						float ran = (float) (Math.random()*160);
 						for(int j = 1;j <= 10;j++){
@@ -895,10 +882,8 @@ public class Enemy extends Unit{
 					this.count++;
 				}
 				//						}
-
 			}
 			if((getVelocity() == 0 && round ==1)){
-
 				if(System.currentTimeMillis() - getLastFire() >= 350) {
 					if(count%2 == 0){
 						for(int i = 0 ; i<12;i++){
@@ -918,8 +903,6 @@ public class Enemy extends Unit{
 						this.count++;
 					}
 				}
-
-
 				if(((int)System.currentTimeMillis()/1000%9 == 8)){
 					delay++;
 				}
@@ -927,10 +910,14 @@ public class Enemy extends Unit{
 					round++;
 					delay = 0;
 				}
-
 			}
 		}
 	}
+
+		
+
+
+		
 	private void fireStageFour() {
 		//MAIN
 		//Enemy flow
@@ -1135,7 +1122,7 @@ public class Enemy extends Unit{
 			}
 		}
 	}
->>>>>>> origin/master
+
 	private void fireStageFive() {
 		
 		if((getId() >= 6 && getId() <= 25) || (getId() >= 46 && getId() <= 65)) {

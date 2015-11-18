@@ -85,14 +85,6 @@ public abstract class SpaceObject {
 		this.direction = direction;
 	}
 
-	public float getRotate() {
-		return rotate;
-	}
-
-	public void setRotate(float rotate) {
-		this.rotate = rotate;
-	}
-
 	public void render() {
 		Game.batch.draw(texture, pos.x, pos.y, texture.getRegionWidth()/2, texture.getRegionHeight()/2, texture.getRegionWidth(), texture.getRegionHeight(), 1, 1, rotate);
 	}
