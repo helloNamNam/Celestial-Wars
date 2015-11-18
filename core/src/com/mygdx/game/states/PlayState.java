@@ -26,7 +26,7 @@ public class PlayState extends State {
 	public static final float pointStartX = 330 - (Assets.PLAYER.getRegionWidth()/2);
 	public static final float pointStartY = 25;
 	
-	public static int stage = 1;
+	public static int stage = 2;
 
 	public int loop;
 	public int counterID;
@@ -163,6 +163,8 @@ public class PlayState extends State {
 		player.update();
 		if(stage == 1) {
 			stageOne();
+		}else if(stage == 2) {
+			stageTwo();
 		}else if(stage == 5) {
 			stageFive();
 		}
@@ -279,6 +281,80 @@ public class PlayState extends State {
 			boss1.setLooping(true);
 			entityManager.addEnemy(new Enemy(entityManager, 999, 1620, new Vector2(((620 - Assets.BOSSONE.getRegionWidth()) / 2) + 20, 980), 3, 270, Assets.BOSSONE, 0, 65, 45, 225, 230, timeControl));
 			counterID = 6;
+		}
+	}
+	public void stageTwo() {
+		if(timeControl.getTime() >= 20 && timeControl.getTime() < 90 && timeControl.getTime() % 5 == 0 && loop == 1){
+			entityManager.addEnemy(new Enemy(entityManager, 301, 8, new Vector2(20, 60), 6, 55, Assets.ENEMY, 55-270, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
+			entityManager.addEnemy(new Enemy(entityManager, 301, 8, new Vector2(640, 60), 6, 125, Assets.ENEMY, 125-270, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
+		}
+		if(timeControl.getTime() >= 100 && timeControl.getTime() < 200 && timeControl.getTime() % 5 == 0 && loop == 1){
+			entityManager.addEnemy(new Enemy(entityManager, 302, 8, new Vector2(-10, 600), 5, 350, Assets.ENEMY, 350-270, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
+			entityManager.addEnemy(new Enemy(entityManager, 302, 8, new Vector2(-10, 650), 5, 350, Assets.ENEMY, 350-270, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
+		}
+		if(timeControl.getTime() >= 170 && timeControl.getTime() < 250 && timeControl.getTime() % 5 == 0 && loop == 1){
+			entityManager.addEnemy(new Enemy(entityManager, 303, 8, new Vector2(640, 600), 5, 190, Assets.ENEMY, 190-270, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
+			entityManager.addEnemy(new Enemy(entityManager, 303, 8, new Vector2(640, 500), 5, 190, Assets.ENEMY, 190-270, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
+		}
+		if(timeControl.getTime() == 200 && loop == 1){
+			entityManager.addEnemy(new Enemy(entityManager, 304, 1000, new Vector2(-10, 700), 4, 350, Assets.MINIBOSS, 350-270, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
+			counterID = 305;
+		}
+		if(timeControl.getTime() >= 300 && timeControl.getTime() <= 395 && timeControl.getTime() % 5 == 0 && loop == 1) {
+			entityManager.addEnemy(new Enemy(entityManager, counterID, 20, new Vector2(0, 650), 2.5, 0, Assets.ENEMY, 0, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
+			entityManager.addEnemy(new Enemy(entityManager, counterID, 20, new Vector2(650, 550), 2.5, 180, Assets.ENEMY, 0, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
+			counterID++;
+		}
+		if(timeControl.getTime() >= 440 && timeControl.getTime() <= 600 && timeControl.getTime() % 20 == 0 && loop == 1) {
+			if(timeControl.getTime() % 20 == 0 && timeControl.getTime() % 40 != 0 && timeControl.getTime() != 600){
+				entityManager.addEnemy(new Enemy(entityManager, 325, 20, new Vector2(0, 100), 6, 75, Assets.ENEMYEIEI, 0, 0, 0, Assets.ENEMYEIEI.getRegionWidth(), Assets.ENEMYEIEI.getRegionHeight()));
+			}else if(timeControl.getTime() != 600){
+				entityManager.addEnemy(new Enemy(entityManager, 326, 20, new Vector2(660, 100), 6, 105, Assets.ENEMYEIEI, 0, 0, 0, Assets.ENEMYEIEI.getRegionWidth(), Assets.ENEMYEIEI.getRegionHeight()));
+			}
+			if(timeControl.getTime() == 600){
+				entityManager.addEnemy(new Enemy(entityManager, 327, 200, new Vector2(0, 100), 6, 75, Assets.ENEMYEIEI, 0, 0, 0, Assets.ENEMYEIEI.getRegionWidth(), Assets.ENEMYEIEI.getRegionHeight()));
+				entityManager.addEnemy(new Enemy(entityManager, 328, 200, new Vector2(660, 100), 6, 105, Assets.ENEMYEIEI, 0, 0, 0, Assets.ENEMYEIEI.getRegionWidth(), Assets.ENEMYEIEI.getRegionHeight()));
+			}
+		}
+		if(timeControl.getTime() >= 630 && timeControl.getTime() <= 710 && timeControl.getTime() % 2 == 0 && loop == 1) {
+			entityManager.addEnemy(new Enemy(entityManager, 329, 15, new Vector2(0, 750), 6, 335, Assets.ENEMY, 335+90, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
+		}
+		if(timeControl.getTime() >= 720 && timeControl.getTime() <= 780 && timeControl.getTime() % 3 == 0 && loop == 1) {
+			entityManager.addEnemy(new Enemy(entityManager, 330, 15, new Vector2(600, 800), 5, 270, Assets.ENEMY, 270+90, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
+		}
+		if(timeControl.getTime() >= 780 && timeControl.getTime() <= 840 && timeControl.getTime() % 3 == 0 && loop == 1) {
+			entityManager.addEnemy(new Enemy(entityManager, 330, 15, new Vector2(100, 0), 5, 90, Assets.ENEMY, 90+90, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
+		}
+		if(timeControl.getTime() == 850 && loop == 1) {
+			entityManager.addEnemy(new Enemy(entityManager, 331, 1500, new Vector2(300, 0), 15, 90, Assets.MINIBOSS, 90+90, 0, 0, Assets.MINIBOSS.getRegionWidth(), Assets.MINIBOSS.getRegionHeight()));
+		}
+		if(timeControl.getTime() == 870 && loop == 1){
+			entityManager.addEnemy(new Enemy(entityManager, 332, 150, new Vector2(-10, 700), 4, 350, Assets.MINIBOSS, 350-270, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
+		}
+		if(timeControl.getTime() >= 880 && timeControl.getTime() < 950 && timeControl.getTime() % 5 == 0 && loop == 1){
+			entityManager.addEnemy(new Enemy(entityManager, 333, 8, new Vector2(100, 0), 6, 90, Assets.ENEMY, 90-270, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
+		}
+		if(timeControl.getTime() > 1000){
+			for(int i=0; i < entityManager.getEnemies().size(); i++){
+				if(entityManager.getEnemies().get(i).getId() == 332){
+					entityManager.addRemove(entityManager.getEnemies().get(i));
+				}
+			}
+		}
+		//Boss and Mini Boss
+		if(timeControl.getTime() >= 1000 && timeControl.getTime() <= 1030 && loop == 1){
+			if(timeControl.getTime() == 1000){ //mini boss
+				entityManager.addEnemy(new Enemy(entityManager, 334, 400, new Vector2(-40, 850), 4, 350, Assets.BOSSTWOMINI, 350-270, 0, 0, Assets.BOSSTWOMINI.getRegionWidth(), Assets.BOSSTWOMINI.getRegionHeight()));
+			}
+			if(timeControl.getTime() == 1000){ //mini boss
+				entityManager.addEnemy(new Enemy(entityManager, 335, 400, new Vector2(580, 850), 4, 190, Assets.BOSSTWOMINI, 190-270, 0, 0, Assets.BOSSTWOMINI.getRegionWidth(), Assets.BOSSTWOMINI.getRegionHeight()));
+			}
+			if(timeControl.getTime() == 1030){ //boss
+				entityManager.addEnemy(new Enemy(entityManager, 336, 1000, new Vector2(180, 850), 3, 270, Assets.BOSSTWO, 270-270, 0, 0, Assets.BOSSTWO.getRegionWidth(), Assets.BOSSTWO.getRegionHeight()));
+			}
+		}
+		if(timeControl.getTime() > 1700){
+			entityManager.clearAll();
 		}
 	}
 	public void stageFive() {

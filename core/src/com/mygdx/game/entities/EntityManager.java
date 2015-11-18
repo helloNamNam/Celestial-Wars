@@ -99,6 +99,10 @@ public class EntityManager {
 		return players;
 	}
 	
+	public List<Unit> getEnemies() {
+		return enemies;
+	}
+
 	public void clearAll(){
 		for(int i = 0; i < bullets.size(); i++) {
 			removeObject.add(bullets.get(i));

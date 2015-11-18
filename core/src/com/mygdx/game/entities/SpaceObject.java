@@ -69,6 +69,10 @@ public abstract class SpaceObject {
 		return velocity;
 	}
 
+	public void setVelocity(double velocity) {
+		this.velocity = velocity;
+	}
+
 	public void setVelocity(int velocity) {
 		this.velocity = velocity;
 	}
@@ -79,6 +83,14 @@ public abstract class SpaceObject {
 
 	public void setDirection(double direction) {
 		this.direction = direction;
+	}
+
+	public float getRotate() {
+		return rotate;
+	}
+
+	public void setRotate(float rotate) {
+		this.rotate = rotate;
 	}
 
 	public void render() {
