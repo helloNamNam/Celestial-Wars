@@ -48,7 +48,7 @@ public class Player extends Unit {
 	}
 
 	public void die(){
-//		heartPoint --;
+		heartPoint --;
 		if(heartPoint > 0){
 			setPos(PlayState.pointStartX, PlayState.pointStartY);
 			setHp(1);

@@ -115,9 +115,9 @@ public class PlayState extends State {
 		heartB = new Sprite(new  Texture("images/heart2.png"));
 		heartC = new Sprite(new  Texture("images/heart3.png"));
 		
-		heartA.setBounds(800, 200, heartA.getWidth(), heartA.getHeight());
-		heartB.setBounds(900, 200, heartB.getWidth(), heartB.getHeight());
-		heartC.setBounds(1000, 200, heartC.getWidth(), heartC.getHeight());
+		heartA.setBounds(800, 200, 100, 100);
+		heartB.setBounds(925, 200, 100, 100);
+		heartC.setBounds(1050, 200, 100, 100);
 //		timeControl.setTime(980);
 	}
 
@@ -193,6 +193,31 @@ public class PlayState extends State {
 		heartA.draw(Game.batch);
 		heartB.draw(Game.batch);
 		heartC.draw(Game.batch);
+		
+		if (Player.heartPoint == 3)
+		{
+			heartA.setAlpha(1);
+			heartB.setAlpha(1);
+			heartC.setAlpha(1);
+		}
+		if (Player.heartPoint == 2)
+		{
+			heartA.setAlpha(0);
+			heartB.setAlpha(1);
+			heartC.setAlpha(1);
+		}
+		if (Player.heartPoint == 1)
+		{
+			heartA.setAlpha(0);
+			heartB.setAlpha(0);
+			heartC.setAlpha(1);
+		}
+		if (Player.heartPoint == 0)
+		{
+			heartA.setAlpha(0);
+			heartB.setAlpha(0);
+			heartC.setAlpha(0);
+		}
 		
 		Game.batch.end();
 		scoreStage.getActors();
