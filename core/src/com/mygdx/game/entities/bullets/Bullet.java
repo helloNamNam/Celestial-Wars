@@ -62,7 +62,7 @@ public class Bullet extends ItemObject{
 				setRotate(ran);
 			}
 		}
-		moveObject(entityManager);
 		}
+		moveObject(entityManager);
 	}
 }

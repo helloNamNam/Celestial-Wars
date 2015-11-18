@@ -27,7 +27,7 @@ public class PlayState extends State {
 	public static final float pointStartX = 330 - (Assets.PLAYER.getRegionWidth()/2);
 	public static final float pointStartY = 25;
 	
-	public static int stage = 2;
+	public static int stage = 5;
 
 	public int loop;
 	public int counterID;
