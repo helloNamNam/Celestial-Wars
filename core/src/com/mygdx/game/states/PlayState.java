@@ -309,8 +309,11 @@ public class PlayState extends State {
 		}
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 <<<<<<< HEAD
+=======
+>>>>>>> parent of ef70390... fix error again
 =======
 >>>>>>> parent of ef70390... fix error again
 	public void stageTwo() {
@@ -387,6 +390,7 @@ public class PlayState extends State {
 			entityManager.clearAll();
 		}
 	}
+<<<<<<< HEAD
 <<<<<<< HEAD
 		
 =======
@@ -606,6 +610,8 @@ public class PlayState extends State {
 		
 	}
 >>>>>>> origin/master
+=======
+>>>>>>> parent of ef70390... fix error again
 =======
 >>>>>>> parent of ef70390... fix error again
 	public void stageFive() {
