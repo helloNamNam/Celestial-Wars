@@ -27,7 +27,7 @@ public class PlayState extends State {
 	public static final float pointStartX = 330 - (Assets.PLAYER.getRegionWidth()/2);
 	public static final float pointStartY = 25;
 	
-	public static int stage = 1;
+	public static int stage = 5;
 
 	public int loop;
 	public int counterID;
@@ -307,14 +307,12 @@ public class PlayState extends State {
 			entityManager.addEnemy(new Enemy(entityManager, 999, 1620, new Vector2(((620 - Assets.BOSSONE.getRegionWidth()) / 2) + 20, 980), 3, 270, Assets.BOSSONE, 0, 65, 45, 225, 230, timeControl));
 			counterID = 6;
 		}
-		if(timeControl.getTime() > 1200){
-			PlayState.stage = 2;
-			timeControl.setTime(0);
-			entityManager.clearAll();
-		}
 	}
+<<<<<<< HEAD
 	
 <<<<<<< HEAD
+=======
+>>>>>>> parent of ef70390... fix error again
 	public void stageTwo() {
 		if(timeControl.getTime() >= 20 && timeControl.getTime() < 90 && timeControl.getTime() % 5 == 0 && loop == 1){
 			entityManager.addEnemy(new Enemy(entityManager, 301, 8, new Vector2(20, 60), 6, 55, Assets.ENEMY, 55-270, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
@@ -384,11 +382,12 @@ public class PlayState extends State {
 			if(timeControl.getTime() == 1030){ //boss
 				entityManager.addEnemy(new Enemy(entityManager, 336, 1000, new Vector2(180, 850), 3, 270, Assets.BOSSTWO, 270-270, 0, 0, Assets.BOSSTWO.getRegionWidth(), Assets.BOSSTWO.getRegionHeight()));
 			}
-		}		
+		}
 		if(timeControl.getTime() > 1700){
 			entityManager.clearAll();
 		}
 	}
+<<<<<<< HEAD
 		
 =======
 	public void stageFour() {
@@ -607,6 +606,8 @@ public class PlayState extends State {
 		
 	}
 >>>>>>> origin/master
+=======
+>>>>>>> parent of ef70390... fix error again
 	public void stageFive() {
 		if(timeControl.getTime() >= 25 && timeControl.getTime() <= 45 && timeControl.getTime() % 5 == 0 && loop == 1) {
 			entityManager.addEnemy(new Enemy(entityManager, counterID, 5, new Vector2(0, 800), 3, 0, Assets.ENEMY, 0, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
