@@ -177,15 +177,12 @@ public class PlayState extends State {
 		player.update();
 		if(stage == 1) {
 			stageOne();
-<<<<<<< HEAD
 		}else if(stage == 2) {
 			stageTwo();
-=======
 		}else if(stage == 3) {
 			stageThree();
 		}else if(stage == 4) {
 		stageFour();
->>>>>>> origin/master
 		}else if(stage == 5) {
 			stageFive();
 		}
@@ -308,17 +305,7 @@ public class PlayState extends State {
 			counterID = 6;
 		}
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	
-<<<<<<< HEAD
-=======
->>>>>>> parent of ef70390... fix error again
-=======
->>>>>>> parent of ef70390... fix error again
-=======
->>>>>>> parent of ef70390... fix error again
+
 	public void stageTwo() {
 		if(timeControl.getTime() >= 20 && timeControl.getTime() < 90 && timeControl.getTime() % 5 == 0 && loop == 1){
 			entityManager.addEnemy(new Enemy(entityManager, 301, 8, new Vector2(20, 60), 6, 55, Assets.ENEMY, 55-270, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
@@ -393,11 +380,7 @@ public class PlayState extends State {
 			entityManager.clearAll();
 		}
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		
-=======
+
 	public void stageFour() {
 		//MAIN
 				//enemy flow
@@ -520,11 +503,11 @@ public class PlayState extends State {
 				if(timeControl.getTime() == 1000 && loop == 1) {
 					entityManager.clearAll();
 				}
-						if(timeControl.getTime() == 1100 && loop == 1) {
-							counterID = 164;
-							entityManager.addEnemy(new Enemy(entityManager, counterID,1080,  new Vector2(150, 940), 4, 270, Assets.BOSSFOUR, 0, 0,0, Assets.BOSSFOUR.getRegionWidth(), Assets.BOSSFOUR.getRegionHeight()));
-							counterID++;
-						}
+				if(timeControl.getTime() == 1100 && loop == 1) {
+					counterID = 164;
+					entityManager.addEnemy(new Enemy(entityManager, counterID,1080,  new Vector2(150, 940), 4, 270, Assets.BOSSFOUR, 0, 0,0, Assets.BOSSFOUR.getRegionWidth(), Assets.BOSSFOUR.getRegionHeight()));
+					counterID++;
+				}
 			//MAIN
 	}
 	public void stageThree(){
@@ -613,13 +596,7 @@ public class PlayState extends State {
 					}
 		
 	}
->>>>>>> origin/master
-=======
->>>>>>> parent of ef70390... fix error again
-=======
->>>>>>> parent of ef70390... fix error again
-=======
->>>>>>> parent of ef70390... fix error again
+
 	public void stageFive() {
 		if(timeControl.getTime() >= 25 && timeControl.getTime() <= 45 && timeControl.getTime() % 5 == 0 && loop == 1) {
 			entityManager.addEnemy(new Enemy(entityManager, counterID, 5, new Vector2(0, 800), 3, 0, Assets.ENEMY, 0, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
