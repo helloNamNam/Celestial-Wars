@@ -23,12 +23,14 @@ public class Assets {
 	public static TextureRegion BULLETGREENSH = new TextureRegion(new Texture("bullets/BulletGreen01.png"));
 	public static TextureRegion BULLETGREENBIG = new TextureRegion(new Texture("bullets/BulletsGreenBig.png"));
 	public static TextureRegion BULLETROCKET01 = new TextureRegion(new Texture("bullets/BulletGreenRocket.png"));
+	public static TextureRegion BULLETREDRAY = new TextureRegion(new Texture("bullets/redRay.png"));
 	public static TextureRegion BULLETRED01 = new TextureRegion(new Texture("bullets/bulletRed01.png"));
 	public static TextureRegion BULLETREDBIG = new TextureRegion(new Texture("bullets/BulletsRedBig.png"));
 	public static TextureRegion BULLETREDKUNAI = new TextureRegion(new Texture("bullets/RedKunai.png"));
 	public static TextureRegion BULLETREDSMALL = new TextureRegion(new Texture("bullets/BulletsRedSmall.png"));
 	public static TextureRegion BULLETPURTRI = new TextureRegion(new Texture("bullets/purTri.png"));
 	public static TextureRegion BULLETMAGIC = new TextureRegion(new Texture("bullets/magicRing.png"));
+	public static TextureRegion BULLETPINKLINE = new TextureRegion(new Texture("bullets/pinkLine.png"));
 	public static TextureRegion BULLETLEVEL11 = new TextureRegion(new Texture("bullets/Lightening1.png"));
 	public static TextureRegion BULLETLEVEL12 = new TextureRegion(new Texture("bullets/Lightening1F.png"));
 	public static TextureRegion BULLETLEVEL21 = new TextureRegion(new Texture("bullets/Lightening2.png"));
