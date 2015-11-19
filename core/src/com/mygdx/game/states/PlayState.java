@@ -28,10 +28,7 @@ public class PlayState extends State {
 	public static final float pointStartY = 25;
 	
 	public static int stage = 5;
-<<<<<<< HEAD
 	public static int score = 0;
-=======
->>>>>>> origin/master
 
 	public int loop;
 	public int counterID;
@@ -67,11 +64,7 @@ public class PlayState extends State {
 	public static Music boss5;
 	public static Music boss6;
 	private Sound alarm;
-<<<<<<< HEAD
 	private Sound dead;
-=======
-	private float ran;
->>>>>>> origin/master
 	
 	
 	public static Music getBoss2() {
@@ -230,13 +223,8 @@ public class PlayState extends State {
 		}else if(stage == 3) {
 			stageThree();
 		}else if(stage == 4) {
-<<<<<<< HEAD
 			stageFour();
 		}else {
-=======
-		stageFour();
-		}else if(stage == 5) {
->>>>>>> origin/master
 			stageFive();
 		}
 	}
@@ -401,17 +389,11 @@ public class PlayState extends State {
 			counterID = 6;
 		}
 	}
-<<<<<<< HEAD
 	public void stageTwo() {
 		if(timeControl.getTime() >= 20 && timeControl.getTime() < 90 && timeControl.getTime() % 5 == 0 && loop == 1){
 			stage2.play();
 			stage2.setVolume(0.2f);
 			stage2.setLooping(true);
-=======
-
-	public void stageTwo() {
-		if(timeControl.getTime() >= 20 && timeControl.getTime() < 90 && timeControl.getTime() % 5 == 0 && loop == 1){
->>>>>>> origin/master
 			entityManager.addEnemy(new Enemy(entityManager, 301, 8, new Vector2(20, 60), 6, 55, Assets.ENEMY, 55-270, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
 			entityManager.addEnemy(new Enemy(entityManager, 301, 8, new Vector2(640, 60), 6, 125, Assets.ENEMY, 125-270, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
 		}
@@ -424,11 +406,7 @@ public class PlayState extends State {
 			entityManager.addEnemy(new Enemy(entityManager, 303, 8, new Vector2(640, 500), 5, 190, Assets.ENEMY, 190-270, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
 		}
 		if(timeControl.getTime() == 200 && loop == 1){
-<<<<<<< HEAD
 			entityManager.addEnemy(new Enemy(entityManager, 304, 1000, new Vector2(-10, 700), 4, 350, Assets.MINIBOSS02, 350-270, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-=======
-			entityManager.addEnemy(new Enemy(entityManager, 304, 1000, new Vector2(-10, 700), 4, 350, Assets.MINIBOSS, 350-270, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
->>>>>>> origin/master
 			counterID = 305;
 		}
 		if(timeControl.getTime() >= 300 && timeControl.getTime() <= 395 && timeControl.getTime() % 5 == 0 && loop == 1) {
@@ -457,17 +435,10 @@ public class PlayState extends State {
 			entityManager.addEnemy(new Enemy(entityManager, 330, 15, new Vector2(100, 0), 5, 90, Assets.ENEMY, 90+90, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
 		}
 		if(timeControl.getTime() == 850 && loop == 1) {
-<<<<<<< HEAD
 			entityManager.addEnemy(new Enemy(entityManager, 331, 1500, new Vector2(300, 0), 15, 90, Assets.MINIBOSS02, 90+90, 0, 0, Assets.MINIBOSS02.getRegionWidth(), Assets.MINIBOSS02.getRegionHeight()));
 		}
 		if(timeControl.getTime() == 870 && loop == 1){
 			entityManager.addEnemy(new Enemy(entityManager, 332, 150, new Vector2(-10, 700), 4, 350, Assets.MINIBOSS02, 350-270, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-=======
-			entityManager.addEnemy(new Enemy(entityManager, 331, 1500, new Vector2(300, 0), 15, 90, Assets.MINIBOSS, 90+90, 0, 0, Assets.MINIBOSS.getRegionWidth(), Assets.MINIBOSS.getRegionHeight()));
-		}
-		if(timeControl.getTime() == 870 && loop == 1){
-			entityManager.addEnemy(new Enemy(entityManager, 332, 150, new Vector2(-10, 700), 4, 350, Assets.MINIBOSS, 350-270, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
->>>>>>> origin/master
 		}
 		if(timeControl.getTime() >= 880 && timeControl.getTime() < 950 && timeControl.getTime() % 5 == 0 && loop == 1){
 			entityManager.addEnemy(new Enemy(entityManager, 333, 8, new Vector2(100, 0), 6, 90, Assets.ENEMY, 90-270, 0, 0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
@@ -488,7 +459,6 @@ public class PlayState extends State {
 				entityManager.addEnemy(new Enemy(entityManager, 335, 400, new Vector2(580, 850), 4, 190, Assets.BOSSTWOMINI, 190-270, 0, 0, Assets.BOSSTWOMINI.getRegionWidth(), Assets.BOSSTWOMINI.getRegionHeight()));
 			}
 			if(timeControl.getTime() == 1030){ //boss
-<<<<<<< HEAD
 				stage2.dispose();
 				alarm.play();
 				boss2.play();
@@ -497,17 +467,11 @@ public class PlayState extends State {
 				entityManager.addEnemy(new Enemy(entityManager, 336, 1000, new Vector2(180, 850), 3, 270, Assets.BOSSTWO, 270-270, 0, 0, Assets.BOSSTWO.getRegionWidth(), Assets.BOSSTWO.getRegionHeight(), timeControl));
 				counterID = 6;
 			}
-		}		
-=======
-				entityManager.addEnemy(new Enemy(entityManager, 336, 1000, new Vector2(180, 850), 3, 270, Assets.BOSSTWO, 270-270, 0, 0, Assets.BOSSTWO.getRegionWidth(), Assets.BOSSTWO.getRegionHeight()));
-			}
 		}
->>>>>>> origin/master
 		if(timeControl.getTime() > 1700){
 			entityManager.clearAll();
 		}
 	}
-<<<<<<< HEAD
 	public void stageThree() {
 		System.out.println(counterID);
 		//fall
@@ -515,141 +479,6 @@ public class PlayState extends State {
 			stage3.play();
 			stage3.setVolume(0.4f);
 			stage3.setLooping(true);
-=======
-
-	public void stageFour() {
-		//MAIN
-				//enemy flow
-				if(timeControl.getTime() >= 25 && timeControl.getTime() <= 65 && timeControl.getTime() % 5 == 0 && loop == 1) {
-					ran = (float) (Math.random()*(-25)-10);
-					entityManager.addEnemy(new Enemy(entityManager, counterID, 5 ,new Vector2(0, (float) (Math.random()*100+480)), 3,ran, Assets.ENEMY, ran+90, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-					ran = (float) (Math.random()*(25)+180);			
-					entityManager.addEnemy(new Enemy(entityManager, counterID,5, new Vector2(650, (float) (Math.random()*100+480)), 3, ran, Assets.ENEMY, ran+90, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-				}
-				
-				//Aimingset
-				if(timeControl.getTime() >= 75 && timeControl.getTime() <= 95 && timeControl.getTime() % 5 == 0 && loop == 1) {
-					counterID = 24;
-					entityManager.addEnemy(new Enemy(entityManager, counterID,5, new Vector2(0, 800), 3, 0, Assets.ENEMY, 0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-					entityManager.addEnemy(new Enemy(entityManager, counterID,5, new Vector2(650, 700), 3, 180, Assets.ENEMY, 0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-				}
-				if(timeControl.getTime() >= 145 && timeControl.getTime() <= 155 && timeControl.getTime() % 5 == 0 && loop == 1) {
-					entityManager.addEnemy(new Enemy(entityManager, counterID,5, new Vector2(0, 800), 3, 0, Assets.ENEMY, 0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-					entityManager.addEnemy(new Enemy(entityManager, counterID,5, new Vector2(650, 700), 3, 180, Assets.ENEMY, 0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-				}
-				
-				//Aimingset
-				if(timeControl.getTime() >= 165 && timeControl.getTime() <= 185 && timeControl.getTime() % 5 == 0 && loop == 1) {
-					entityManager.addEnemy(new Enemy(entityManager, counterID,5, new Vector2(0, 800), 3, 0, Assets.ENEMY, 0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-					entityManager.addEnemy(new Enemy(entityManager, counterID,5, new Vector2(650, 700), 3, 180, Assets.ENEMY, 0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-				}
-				if(timeControl.getTime() >= 235 && timeControl.getTime() <= 245 && timeControl.getTime() % 5 == 0 && loop == 1) {
-					entityManager.addEnemy(new Enemy(entityManager, counterID,5, new Vector2(0, 800), 3, 0, Assets.ENEMY, 0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-					entityManager.addEnemy(new Enemy(entityManager, counterID,5, new Vector2(650, 700), 3, 180, Assets.ENEMY, 0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-				}
-						
-				//4quater set
-				if(timeControl.getTime() == 275 && loop == 1) {
-					counterID = 56;
-					entityManager.addEnemy(new Enemy(entityManager, counterID,100, new Vector2(155, 940), 2, 270, Assets.ENEMY, 270, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-				}
-				if(timeControl.getTime() == 275 && loop == 1) {
-					entityManager.addEnemy(new Enemy(entityManager, counterID,100, new Vector2(465, 940), 2, 270, Assets.ENEMY, 270, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-				}
-						
-				if(timeControl.getTime() == 345 && loop == 1) {
-					entityManager.addEnemy(new Enemy(entityManager, counterID,100, new Vector2(232, 940), 2, 270, Assets.ENEMY, 270, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-				}
-				if(timeControl.getTime() == 345 && loop == 1) {
-					entityManager.addEnemy(new Enemy(entityManager, counterID,100, new Vector2(388, 940), 2, 270, Assets.ENEMY, 270, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-				}
-				
-				//enemy flow
-				if(timeControl.getTime() >= 405 && timeControl.getTime() <= 445 && timeControl.getTime() % 2 == 0 && loop == 1) {
-					counterID= 60;
-					ran = (float) (Math.random()*(-25)-10);
-					entityManager.addEnemy(new Enemy(entityManager, counterID,5, new Vector2(0, (float) (Math.random()*100+480)-90), 3,ran, Assets.ENEMY, ran+90, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-					ran = (float) (Math.random()*(25)+180);			
-					entityManager.addEnemy(new Enemy(entityManager, counterID,5, new Vector2(650, (float) (Math.random()*100+480)-90), 3, ran, Assets.ENEMY, ran+90, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-				}
-				
-				//enemy flow
-				if(timeControl.getTime() >= 465 && timeControl.getTime() <= 505 && timeControl.getTime() % 2 == 0 && loop == 1) {
-					ran = (float) (Math.random()*(-25)-10);
-					entityManager.addEnemy(new Enemy(entityManager, counterID,5, new Vector2(0, (float) (Math.random()*100+480)-90), 3,ran, Assets.ENEMY, ran+90, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-					ran = (float) (Math.random()*(25)+180);			
-					entityManager.addEnemy(new Enemy(entityManager, counterID,5, new Vector2(650, (float) (Math.random()*100+480)-90), 3, ran, Assets.ENEMY, ran+90, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-				}
-				
-				//Spread bull
-				if(timeControl.getTime() >= 515 && timeControl.getTime() <= 535 && timeControl.getTime() % 5 == 0 && loop == 1) {
-					counterID = 140;
-					entityManager.addEnemy(new Enemy(entityManager, counterID,5, new Vector2(0, 800), 3, 0, Assets.ENEMY, 0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-					entityManager.addEnemy(new Enemy(entityManager, counterID,5, new Vector2(650, 700), 4, 180, Assets.ENEMY, 0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-				}
-				
-				//Spread bull
-				if(timeControl.getTime() >= 575 && timeControl.getTime() <= 595 && timeControl.getTime() % 5 == 0 && loop == 1) {
-					entityManager.addEnemy(new Enemy(entityManager, counterID,100, new Vector2(0, 800), 4, 0, Assets.ENEMY, 0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-					entityManager.addEnemy(new Enemy(entityManager, counterID,100, new Vector2(650, 700), 3, 180, Assets.ENEMY, 0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-				}
-				
-				//4quater set
-				if(timeControl.getTime() == 635 && loop == 1) {
-					counterID = 160;
-					entityManager.addEnemy(new Enemy(entityManager, counterID,200, new Vector2(155, 940), 2, 270, Assets.ENEMY, 0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-				}
-				if(timeControl.getTime() == 635 && loop == 1) {
-					entityManager.addEnemy(new Enemy(entityManager, counterID,200, new Vector2(465, 940), 2, 270, Assets.ENEMY, 0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-				}
-								
-				if(timeControl.getTime() == 705 && loop == 1) {
-					entityManager.addEnemy(new Enemy(entityManager, counterID,200, new Vector2(232, 940), 2, 270, Assets.ENEMY, 0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-				}
-				if(timeControl.getTime() == 705 && loop == 1) {
-					entityManager.addEnemy(new Enemy(entityManager, counterID,200, new Vector2(388, 940), 2, 270, Assets.ENEMY, 0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-				}
-				//Boss
-				if(timeControl.getTime() == 1000 && loop == 1) {
-					entityManager.clearAll();
-				}
-				if(timeControl.getTime() == 1100 && loop == 1) {
-					counterID = 164;
-					entityManager.addEnemy(new Enemy(entityManager, counterID,1080,  new Vector2(150, 940), 4, 270, Assets.BOSSFOUR, 0, 0,0, Assets.BOSSFOUR.getRegionWidth(), Assets.BOSSFOUR.getRegionHeight()));
-					counterID++;
-				}
-			//MAIN
-	}
-	public void stageThree(){
-		//fall
-		if(timeControl.getTime() >= 25 && timeControl.getTime() <= 65 && timeControl.getTime() % 5 == 0 && loop == 1) {
->>>>>>> origin/master
 			counterID = 6;
 			entityManager.addEnemy(new Enemy(entityManager, counterID,5, new Vector2(80, 940), 2, 270, Assets.ENEMY, 0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
 			counterID++;
@@ -666,11 +495,6 @@ public class PlayState extends State {
 			entityManager.addEnemy(new Enemy(entityManager, counterID,100, new Vector2(0, 700), 3, 330, Assets.ENEMY, 0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
 			counterID++;
 		}
-<<<<<<< HEAD
-
-=======
-		
->>>>>>> origin/master
 		//fall
 		if(timeControl.getTime() >= 175 && timeControl.getTime() <= 215 && timeControl.getTime() % 5 == 0 && loop == 1) {
 			entityManager.addEnemy(new Enemy(entityManager, counterID,5, new Vector2(80, 940), 2, 270, Assets.ENEMY, 0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
@@ -678,22 +502,12 @@ public class PlayState extends State {
 			entityManager.addEnemy(new Enemy(entityManager, counterID,5, new Vector2(570, 940), 2, 270, Assets.ENEMY,0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
 			counterID++;
 		}
-<<<<<<< HEAD
-
-=======
-		
->>>>>>> origin/master
 		//mini boss1
 		if(timeControl.getTime() == 245 && loop == 1) {
 			counterID = 49;
 			entityManager.addEnemy(new Enemy(entityManager, counterID,300, new Vector2(648, 400), 4, 160, Assets.ENEMY, 0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
 			counterID++;
 		}
-<<<<<<< HEAD
-
-=======
-		
->>>>>>> origin/master
 		//rising star
 		if(timeControl.getTime() >= 465 && timeControl.getTime() <= 545 && timeControl.getTime() % 5 == 0 && loop == 1) {
 			counterID = 50;
@@ -702,11 +516,6 @@ public class PlayState extends State {
 			entityManager.addEnemy(new Enemy(entityManager, counterID,5, new Vector2(570, 0), 3, 90, Assets.ENEMY,0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
 			counterID++;
 		}
-<<<<<<< HEAD
-
-=======
-		
->>>>>>> origin/master
 		//shooting star
 		if(timeControl.getTime() == 565 && loop == 1) {
 			counterID = 100;
@@ -717,8 +526,6 @@ public class PlayState extends State {
 			entityManager.addEnemy(new Enemy(entityManager, counterID,100, new Vector2(0, 700), 3, 330, Assets.ENEMY, 0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
 			counterID++;
 		}
-<<<<<<< HEAD
-
 		//radiant star
 		if(timeControl.getTime() == 640 && loop == 1) {
 			counterID = 102;
@@ -890,41 +697,6 @@ public class PlayState extends State {
 			counterID = 6;
 		}
 	}
-=======
-		
-		//radiant star
-				if(timeControl.getTime() == 640 && loop == 1) {
-					counterID = 102;
-					entityManager.addEnemy(new Enemy(entityManager, counterID,100, new Vector2(110, 940), 3, 270, Assets.ENEMY, 0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-				}
-				if(timeControl.getTime() == 640 && loop == 1) {
-					entityManager.addEnemy(new Enemy(entityManager, counterID,100, new Vector2(540, 940), 3, 270, Assets.ENEMY, 0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-				}
-				
-		//rising star
-				if(timeControl.getTime() >= 815 && timeControl.getTime() <= 855 && timeControl.getTime() % 5 == 0 && loop == 1) {
-					counterID = 104;
-					entityManager.addEnemy(new Enemy(entityManager, counterID,5, new Vector2(80, 0), 3, 90, Assets.ENEMY, 0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-					entityManager.addEnemy(new Enemy(entityManager, counterID,5, new Vector2(570, 0), 3, 90, Assets.ENEMY,0, 0,0, Assets.ENEMY.getRegionWidth(), Assets.ENEMY.getRegionHeight()));
-					counterID++;
-				}
-		
-		//Boss
-			if(timeControl.getTime() == 900 && loop == 1) {
-				entityManager.clearAll();
-			}
-					if(timeControl.getTime() == 1000 && loop == 1) {
-						counterID = 134;
-						entityManager.addEnemy(new Enemy(entityManager, counterID,1080,  new Vector2(240, 940), 4, 270, Assets.BOSSTHREE, 0, 0,0, Assets.BOSSTHREE.getRegionWidth(), Assets.BOSSTHREE.getRegionHeight()));
-						counterID++;
-					}
-		
-	}
-
->>>>>>> origin/master
 	public void stageFive() {
 		
 		if(timeControl.getTime() >= 25 && timeControl.getTime() <= 45 && timeControl.getTime() % 5 == 0 && loop == 1) {
