@@ -6,10 +6,10 @@ import java.util.List;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.mygdx.game.entities.bullets.Bullet;
+import com.mygdx.game.states.PlayState;
 
 
 public class EntityManager {
-	public static int score = 0;
 	List<Unit> enemies;
 	List<SpaceObject> bullets;
 	List<Player> players;
@@ -99,6 +99,10 @@ public class EntityManager {
 		return players;
 	}
 	
+	public List<Unit> getEnemies(){
+		return enemies;
+	}
+	
 	public void clearAll(){
 		for(int i = 0; i < bullets.size(); i++) {
 			removeObject.add(bullets.get(i));
@@ -129,20 +133,20 @@ public class EntityManager {
 						removeObject.add(bullets.get(i));
 						enemies.get(j).setHp(enemies.get(j).getHp() - 1);
 						if(enemies.get(j).getId() != 99 && enemies.get(j).getId() != 999){
-							score += 100 + Math.random()*50;
+							PlayState.score += 100 + Math.random()*50;
 						}else{
-							score += 200 + Math.random()*50;
+							PlayState.score += 200 + Math.random()*50;
 						}
 						if(enemies.get(j).getHp() == 0 && (enemies.get(j).getId() == 99 || enemies.get(j).getId() == 999)) {
 							if(enemies.get(j).getId() == 99) {
-								score += 100000;
+								PlayState.score += 100000;
 							}else{
-								score += 500000;
+								PlayState.score += 500000;
 							}
 							
 							clearAll();
 						}else if(enemies.get(j).getHp() == 0) {
-							score += 500;
+							PlayState.score += 500;
 							removeObject.add(enemies.get(j));
 						}
 					}
@@ -158,7 +162,7 @@ public class EntityManager {
 				}else {
 					enemies.get(i).setHp(enemies.get(i).getHp() - 1);
 				}
-				players.get(0).die();
+//				players.get(0).die();
 			}
 		}
 		for(int i = 0; i < items.size(); i++) {
@@ -182,7 +186,7 @@ public class EntityManager {
 		for(int i = 0; i < bullets.size(); i++) {
 			if((bullets.get(i).getId() > 2) && (players.get(0).getBounds().overlaps((bullets.get(i).getBounds())))) {
 				bullets.remove(bullets.get(i));
-				players.get(0).die();
+//				players.get(0).die();
 			}
 		}
 	}

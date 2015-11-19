@@ -1,5 +1,7 @@
 package com.mygdx.game.states;
 
+import java.util.Scanner;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Music;
@@ -9,6 +11,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import java.io.*;
 
 public class MenuState extends State{
 	
@@ -43,10 +46,13 @@ public class MenuState extends State{
 	private Vector2 mouse = new Vector2(0, 0);
 
 	private float al_credit_state=0f;
+	private float helpstate = 0f;
 	
 	public static Music menu;
 	private Sound button;
 	private Sound enter;
+	private Sprite bg_help;
+	private Scanner check;
 	
 	
 	//constructor
@@ -62,7 +68,8 @@ public class MenuState extends State{
 		menu.play();
 		menu.setLooping(true);
 		spriteBatch = new SpriteBatch();
-		
+
+		bg_help = new Sprite(new Texture(Gdx.files.internal("images/helppic.png")));
 		bg_credit = new Sprite(new Texture(Gdx.files.internal("images/Creditpic.png")));
 		bg = new Sprite(new Texture(Gdx.files.internal("images/bg.png")));
 		credit1 = new Sprite(new  Texture("images/Credit_idle.png"));
@@ -80,6 +87,7 @@ public class MenuState extends State{
 		score1 = new Sprite(new  Texture("images/Highscore_idle.png"));
 		score2 = new Sprite(new  Texture("images/Highscore_selected.png"));
 		
+		bg_help.setBounds(0, 0, bg_help.getRegionWidth(), bg_help.getHeight());
 		bg_credit.setBounds(0 , 0,bg_credit.getWidth(),bg_credit.getHeight());
 		
 		single1.setBounds(30, 380, single1.getWidth(), single1.getHeight());
@@ -111,8 +119,10 @@ public class MenuState extends State{
 			button.play();
 		}
 		
-		if(Gdx.input.isKeyJustPressed(Keys.ESCAPE))
+		if(Gdx.input.isKeyJustPressed(Keys.ESCAPE)){
 			al_credit_state=0;
+			helpstate=0;
+		}
 	}
 
 	@Override
@@ -161,10 +171,21 @@ public class MenuState extends State{
 			}
 			if (al_score == 1)
 			{
-				//go to score
+				try {
+					check = new Scanner(new File("highscore.txt"));
+				} catch (Exception e) {
+				}
+				if(check.hasNext())
+				{
+					
+				}else{
+					int num = 0;
+				}
+				
 			}
 			if (al_help == 1)
 			{
+				helpstate = 1;
 				//go to help
 			}
 			if (al_cre == 1)
@@ -208,6 +229,8 @@ public class MenuState extends State{
 		
 		
 		
+		bg_help.setAlpha(helpstate);
+		bg_help.draw(spriteBatch);
 		bg_credit.setAlpha(al_credit_state);
 		bg_credit.draw(spriteBatch);
 		spriteBatch.end();

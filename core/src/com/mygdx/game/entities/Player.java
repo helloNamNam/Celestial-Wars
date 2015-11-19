@@ -7,12 +7,14 @@ import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.Assets;
 import com.mygdx.game.entities.bullets.Bullet;
 import com.mygdx.game.states.PlayState;
+import java.io.*;
+import java.util.Scanner;
 
 public class Player extends Unit {
 
 	public final static int playerID = 1;
 	public final static int startBulletLevel = 1;
-	public static int heartPoint = 3;
+	public static int heartPoint = 99;
 	public int bulletLevel;
 	private Sound shoot;
 //	public final int WIDTH = 50;
@@ -20,6 +22,7 @@ public class Player extends Unit {
 //	public final float SPEED = 200;
 	
 	EntityManager entityManager;
+	private Scanner check;
 	
 	public Player(EntityManager entityManager, Vector2 pos, int velocity, float direction, TextureRegion texture, float rotate, float xBody, float yBody, float widthBody, float heightBody) {
 		super(playerID, pos, velocity, direction, texture, rotate, xBody, yBody, widthBody, heightBody);
@@ -52,6 +55,37 @@ public class Player extends Unit {
 		if(heartPoint > 0){
 			setPos(PlayState.pointStartX, PlayState.pointStartY);
 			setHp(1);
+		}else{
+			File outFile = new File("highscore.txt");
+			FileWriter fileWriter = null;
+			try {
+				fileWriter = new FileWriter(outFile);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			PrintWriter printWriter= new PrintWriter(fileWriter);
+			String content = (PlayState.score+"");
+			try {
+				check = new Scanner(new File("highscore.txt"));
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+			if (check.hasNext())
+			{
+				String num = check.next();
+				if(PlayState.score >= Integer.parseInt(num))
+				{
+					printWriter.println(PlayState.score);
+				}
+				else
+				{
+					printWriter.println(num);
+				}
+			}else
+			{
+				printWriter.println(content);
+			}
+			printWriter.close();
 		}
 	}
 	@Override

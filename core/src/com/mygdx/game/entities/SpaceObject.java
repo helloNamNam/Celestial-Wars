@@ -69,7 +69,7 @@ public abstract class SpaceObject {
 		return velocity;
 	}
 
-	public void setVelocity(int velocity) {
+	public void setVelocity(double velocity) {
 		this.velocity = velocity;
 	}
 

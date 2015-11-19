@@ -27,6 +27,7 @@ public class Assets {
 	public static TextureRegion BULLETREDBIG = new TextureRegion(new Texture("bullets/BulletsRedBig.png"));
 	public static TextureRegion BULLETREDKUNAI = new TextureRegion(new Texture("bullets/RedKunai.png"));
 	public static TextureRegion BULLETREDSMALL = new TextureRegion(new Texture("bullets/BulletsRedSmall.png"));
+	public static TextureRegion BULLETMAGIC = new TextureRegion(new Texture("bullets/magicRing.png"));
 	public static TextureRegion BULLETLEVEL11 = new TextureRegion(new Texture("bullets/Lightening1.png"));
 	public static TextureRegion BULLETLEVEL12 = new TextureRegion(new Texture("bullets/Lightening1F.png"));
 	public static TextureRegion BULLETLEVEL21 = new TextureRegion(new Texture("bullets/Lightening2.png"));
@@ -39,6 +40,12 @@ public class Assets {
 	public static TextureRegion BULLETLEVEL34 = new TextureRegion(new Texture("bullets/RedLightF.png"));
 	public static TextureRegion BULLETLEVEL35 = new TextureRegion(new Texture("bullets/OrangeLight.png"));
 	public static TextureRegion BULLETLEVEL36 = new TextureRegion(new Texture("bullets/OrangeLightF.png"));
+	
+	public static TextureRegion MINIBOSS02 = new TextureRegion(new Texture("alienblaster.png"));
+	public static TextureRegion BULLETRED = new TextureRegion(new Texture("Bullets_test.png"));
+	public static TextureRegion BULLETREDFLOWER = new TextureRegion(new Texture("asterix_red.gif"));
+	public static TextureRegion BULLETGREENLEAVE = new TextureRegion(new Texture("118px-Leaf_icon_15.svg.png"));
+	public static TextureRegion ENEMYEIEI = new TextureRegion(new Texture("eiei.png"));
 	
 	public static TextureRegion BULLETWATER1 = new TextureRegion(new Texture("bullets/Bulletwater1.png"));
 	public static TextureRegion BULLETWATER2 = new TextureRegion(new Texture("bullets/Bulletwater2.png"));
