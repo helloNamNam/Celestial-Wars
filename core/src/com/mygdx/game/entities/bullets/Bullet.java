@@ -18,7 +18,11 @@ public class Bullet extends ItemObject{
 
 	@Override
 	public void update() {
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> origin/master
 		if(PlayState.stage == 2){
 			if(getId() == 398){
 				if(getPos().x > 620){
@@ -27,6 +31,31 @@ public class Bullet extends ItemObject{
 					}else{
 						setDirection(180 + 360 - getDirection());
 					}
+<<<<<<< HEAD
+=======
+				}
+				if(getPos().x < 20){
+					if(getDirection() < 180){
+						setDirection(180 - getDirection());
+					}else{
+						setDirection(360 - getDirection() - 180);
+					}
+				}
+				if(getPos().y < 25){
+					if(getDirection() < 270){
+						setDirection(270 - getDirection() + 90);
+					}else{
+						setDirection(90 - getDirection() - 270);
+					}
+				}
+			}
+
+		if(getId() == 1005){
+			if(System.currentTimeMillis()/100%6 ==0){
+				int ran = (int) (Math.random()*3);
+				if(ran == 0){
+					setTexture(Assets.BULLETWATER1);
+>>>>>>> origin/master
 				}
 				if(getPos().x < 20){
 					if(getDirection() < 180){
@@ -44,6 +73,7 @@ public class Bullet extends ItemObject{
 				}
 			}
 		}
+<<<<<<< HEAD
 		if(PlayState.stage == 3){
 			if(getId() == 1005){
 				if(System.currentTimeMillis()/100%6 ==0){
@@ -64,6 +94,8 @@ public class Bullet extends ItemObject{
 				}
 
 			}
+=======
+>>>>>>> origin/master
 		}
 		moveObject(entityManager);
 	}

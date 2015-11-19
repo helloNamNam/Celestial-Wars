@@ -70,6 +70,13 @@ public abstract class SpaceObject {
 	}
 
 	public void setVelocity(double velocity) {
+<<<<<<< HEAD
+=======
+		this.velocity = velocity;
+	}
+
+	public void setVelocity(int velocity) {
+>>>>>>> origin/master
 		this.velocity = velocity;
 	}
 
